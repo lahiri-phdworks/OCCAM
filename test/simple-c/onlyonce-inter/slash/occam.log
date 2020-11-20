@@ -1,0 +1,994 @@
+>> /usr/local/bin/slash --inter-spec-policy=onlyonce --no-strip --work-dir=slash multiple.manifest
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.bc -o=/dev/null -Pinterface -Pinterface-output main.01.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.bc
+External call to libcall1
+External call to libcall2
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.bc
+## External calls:
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	libcall2(0x3,0x4)
+## External symbols:
+	libcall1
+	libcall2
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.bc -o=/dev/null -Pinterface -Pinterface-output main.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.bc
+Internalizing '' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 1 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/library.so.i.bc -o /tmp/tmp3r5EHz.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/library.so.i.bc -o /tmp/tmp3r5EHz.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/main.a.i.bc -o /tmp/tmpXHrS7M.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/main.a.i.bc -o /tmp/tmpXHrS7M.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmprlmpd7.iface'...success
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc
+## External calls:
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc
+Reading interface from '/tmp/tmprlmpd7.iface'...success
+External call to malloc
+External call to libcall1
+External call to libcall2
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc
+## External calls:
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	libcall2(0x3,0x4)
+	malloc(0x18)
+## External symbols:
+	libcall1
+	libcall2
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmprlmpd7.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc
+Reading interface from '/tmp/tmprlmpd7.iface'...success
+External call to malloc
+External call to libcall1
+External call to libcall2
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc
+## External calls:
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	libcall2(0x3,0x4)
+	malloc(0x18)
+## External symbols:
+	libcall1
+	libcall2
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmprlmpd7.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc
+Reading interface from '/tmp/tmprlmpd7.iface'...success
+External call to malloc
+External call to libcall1
+External call to libcall2
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc
+## External calls:
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	libcall2(0x3,0x4)
+	malloc(0x18)
+## External symbols:
+	libcall1
+	libcall2
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmprlmpd7.iface -Pinterface-entry /tmp/tmprlmpd7.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.bc -Pspecialize -Pspecialize-output library.so.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=onlyonce
+
+Reading file 'interface_before.01.iface'...success
+ === Begin inter-module specialization ===
+Read 11interface entries.
+SpecializeComponent()
+Specialized  libcall2 to __occam_spec.libcall2(0x3,0x4)
+1 pending rewrites
+Specialized 0
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.bc -Pspecialize -Pspecialize-output library.so.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=onlyonce WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.bc -Pspecialize -Pspecialize-output main.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=onlyonce
+
+Reading file 'interface_before.01.iface'...success
+ === Begin inter-module specialization ===
+Read 11interface entries.
+SpecializeComponent()
+No specialization took place
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.bc -Pspecialize -Pspecialize-output main.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=onlyonce WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc -Prewrite -Prewrite-input main.01.rw
+
+InterRewriterPass()
+Reading file 'main.01.rw'...success
+Done reading (0 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc -Prewrite -Prewrite-input main.01.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc -Prewrite -Prewrite-input library.so.01.rw
+
+InterRewriterPass()
+Reading file 'library.so.01.rw'...success
+'libcall2' -> '__occam_spec.libcall2(0x3,0x4)'
+Done reading (1 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.bc
+Looking for calls to libcall2
+...progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc -Prewrite -Prewrite-input library.so.01.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.02.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc
+## External calls:
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	libcall2
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpmVLP20.iface'...success
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+## External calls:
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpmVLP20.iface'...success
+External call to malloc
+External call to libcall1
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface WHICH RETURNED 0
+
+External call to __occam_spec.libcall2(0x3,0x4)
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface
+
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	libcall2
+	malloc
+	printf
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpmVLP20.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpmVLP20.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	libcall2
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface
+
+	malloc
+	printf
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpmVLP20.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpmVLP20.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function libcall2
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	libcall2
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpmVLP20.iface -Pinterface-entry /tmp/tmpmVLP20.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.bc -o /tmp/tmpAlOw3h.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.bc -o /tmp/tmpAlOw3h.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.bc -o /tmp/tmpqTa23A.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.bc -o /tmp/tmpqTa23A.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmp46kWnJ.iface'...success
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc
+## External calls:
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmp46kWnJ.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface
+
+	libcall1
+	malloc
+	printf
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmp46kWnJ.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmp46kWnJ.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmp46kWnJ.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmp46kWnJ.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp46kWnJ.iface -Pinterface-entry /tmp/tmp46kWnJ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output library.so.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=onlyonce
+
+Reading file 'interface_before.02.iface'...success
+ === Begin inter-module specialization ===
+Read 11interface entries.
+SpecializeComponent()
+No specialization took place
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output library.so.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=onlyonce WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output main.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=onlyonce
+
+Reading file 'interface_before.02.iface'...success
+ === Begin inter-module specialization ===
+Read 11interface entries.
+SpecializeComponent()
+No specialization took place
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output main.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=onlyonce WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input main.02.rw
+
+InterRewriterPass()
+Reading file 'main.02.rw'...success
+Done reading (0 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input main.02.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input library.so.02.rw
+
+InterRewriterPass()
+Reading file 'library.so.02.rw'...success
+Done reading (0 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input library.so.02.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.03.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.03.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.03.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc
+## External calls:
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.03.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.03.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.03.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc
+Internalizing 'libcall2' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 1 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.03.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.03.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.03.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.03.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmphn1TM_.iface'...success
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmphn1TM_.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface
+
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	malloc
+	printf
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmphn1TM_.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmphn1TM_.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface
+
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	malloc
+	printf
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmphn1TM_.iface'...success
+External call to time
+External call to srand
+External call to rand
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	rand()
+	rand()
+	srand(?)
+	srand(?)
+	time(null)
+	time(null)
+## External symbols:
+	rand
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface
+
+	srand
+	time
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmphn1TM_.iface'...success
+External call to malloc
+External call to libcall1
+External call to __occam_spec.libcall2(0x3,0x4)
+External call to libcall1
+External call to libcall1
+External call to printf
+Added reference to function libcall1
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.libcall2(0x3,0x4)
+Generated interface for /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	__occam_spec.libcall2(0x3,0x4)()
+	printf(S:ED88E78E,?,?,?,?)
+	libcall1(0x1,0x2)
+	libcall1(0x5,0x6)
+	libcall1(0x7,0x8)
+	malloc(0x18)
+## External symbols:
+	__occam_spec.libcall2(0x3,0x4)
+	libcall1
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmphn1TM_.iface -Pinterface-entry /tmp/tmphn1TM_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface
+
+InternalizePass
+Reading file 'interface_after.02.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface
+
+InternalizePass
+Reading file 'interface_after.02.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -o main
+
+/tmp/main-4db2fa.o: In function `main':
+llvm-link:(.text+0x45): undefined reference to `libcall1'
+llvm-link:(.text+0x4e): undefined reference to `__occam_spec.libcall2(0x3,0x4)'
+llvm-link:(.text+0x61): undefined reference to `libcall1'
+llvm-link:(.text+0x74): undefined reference to `libcall1'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+EXECUTED: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -o main WHICH RETURNED 1
+
+ERROR: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/onlyonce-inter/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -o main
+returned 1

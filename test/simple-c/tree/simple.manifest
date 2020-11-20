@@ -1,0 +1,6 @@
+{ "main" : "main.o.bc"
+, "binary"  : "main"
+, "modules"    : ["library.so.bc", "subdir/module.o.bc"]
+, "static_args"    : ["8181"]
+, "name"    : "main"
+}

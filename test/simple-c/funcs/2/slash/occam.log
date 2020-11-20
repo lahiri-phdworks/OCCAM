@@ -1,0 +1,616 @@
+>> /usr/local/bin/slash --intra-spec-policy=nonrec-aggressive --inter-spec-policy=nonrec-aggressive --work-dir=slash multiple.manifest
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.bc -o=/home/test/simple-c/funcs/2/slash/main.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.bc -o=/home/test/simple-c/funcs/2/slash/main.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.bc
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.bc -o=/dev/null -Pinterface -Pinterface-output main.01.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.bc
+External call to printf
+External call to printf
+External call to printf
+External call to printf
+Added reference to function add_one
+Added reference to function printf
+Added reference to function add_two
+Added reference to function add_three
+Added reference to function malloc
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.bc
+## External calls:
+	printf(S:3819B955)
+	printf(S:977743CD)
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+## External symbols:
+	add_one
+	add_three
+	add_two
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.bc -o=/dev/null -Pinterface -Pinterface-output main.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.bc
+Internalizing '' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 1 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/library.so.i.bc -o /tmp/tmp40PC3v.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/library.so.i.bc -o /tmp/tmp40PC3v.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpR87Wki.bc -o=/tmp/tmpfaKwsi.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt
+
+=== Begin intra-module specialization ===
+...no progress...
+No specialization took place
+ === End intra-module specialization ===
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpR87Wki.bc -o=/tmp/tmpfaKwsi.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/main.a.i.bc -o /tmp/tmpOHRYlS.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/main.a.i.bc -o /tmp/tmpOHRYlS.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpQjPbMc.bc -o=/tmp/tmpiOs8Op.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt
+
+=== Begin intra-module specialization ===
+...no progress...
+No specialization took place
+ === End intra-module specialization ===
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpQjPbMc.bc -o=/tmp/tmpiOs8Op.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmpDpQlLm.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.bc
+Reading interface from '/tmp/tmpDpQlLm.iface'...success
+External call to malloc
+External call to printf
+External call to add_three
+External call to printf
+Added reference to function printf
+Added reference to function add_three
+Added reference to function malloc
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.bc
+## External calls:
+	add_three(0x4,0x4)
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+## External symbols:
+	add_three
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmpDpQlLm.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.bc
+Reading interface from '/tmp/tmpDpQlLm.iface'...success
+External call to malloc
+External call to printf
+External call to add_three
+External call to printf
+Added reference to function printf
+Added reference to function add_three
+Added reference to function malloc
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.bc
+## External calls:
+	add_three(0x4,0x4)
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+## External symbols:
+	add_three
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDpQlLm.iface -Pinterface-entry /tmp/tmpDpQlLm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.bc -Pspecialize -Pspecialize-output library.so.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=nonrec-aggressive
+
+Reading file 'interface_before.01.iface'...success
+ === Begin inter-module specialization ===
+Read 7interface entries.
+SpecializeComponent()
+Specialized  add_three to __occam_spec.add_three(0x4,0x4)
+1 pending rewrites
+Specialized 0
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.bc -Pspecialize -Pspecialize-output library.so.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=nonrec-aggressive WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.bc -Pspecialize -Pspecialize-output main.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=nonrec-aggressive
+
+Reading file 'interface_before.01.iface'...success
+ === Begin inter-module specialization ===
+Read 7interface entries.
+SpecializeComponent()
+No specialization took place
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.bc -Pspecialize -Pspecialize-output main.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=nonrec-aggressive WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc -Prewrite -Prewrite-input main.01.rw
+
+InterRewriterPass()
+Reading file 'main.01.rw'...success
+Done reading (0 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc -Prewrite -Prewrite-input main.01.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc -Prewrite -Prewrite-input library.so.01.rw
+
+InterRewriterPass()
+Reading file 'library.so.01.rw'...success
+'add_three' -> '__occam_spec.add_three(0x4,0x4)'
+Done reading (1 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.bc
+Looking for calls to add_three
+...progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc -Prewrite -Prewrite-input library.so.01.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.02.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc
+Added reference to function printf
+Added reference to function add_three
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc
+## External calls:
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	add_three
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc
+Internalizing 'add_one' ExternalLinkage DefaultVisibility
+Internalizing 'add_two' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 2 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpBWTbAp.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpBWTbAp.iface'...success
+External call to malloc
+External call to printf
+External call to __occam_spec.add_three(0x4,0x4)
+External call to printf
+Added reference to function printf
+Added reference to function add_three
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc
+## External calls:
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+	__occam_spec.add_three(0x4,0x4)()
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	add_three
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpBWTbAp.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpBWTbAp.iface'...success
+External call to malloc
+External call to printf
+External call to __occam_spec.add_three(0x4,0x4)
+External call to printf
+Added reference to function printf
+Added reference to function add_three
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc
+## External calls:
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+	__occam_spec.add_three(0x4,0x4)()
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	add_three
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBWTbAp.iface -Pinterface-entry /tmp/tmpBWTbAp.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.bc -o /tmp/tmpn5baWF.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.bc -o /tmp/tmpn5baWF.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpVrFy3Y.bc -o=/tmp/tmpi3dp_p.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt
+
+=== Begin intra-module specialization ===
+...no progress...
+No specialization took place
+ === End intra-module specialization ===
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpVrFy3Y.bc -o=/tmp/tmpi3dp_p.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.bc -o /tmp/tmprTf0Xk.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.bc -o /tmp/tmprTf0Xk.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpNiLMTg.bc -o=/tmp/tmpWKgRhj.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt
+
+=== Begin intra-module specialization ===
+...no progress...
+No specialization took place
+ === End intra-module specialization ===
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpNiLMTg.bc -o=/tmp/tmpWKgRhj.bc -Ppeval -Ppeval-policy=nonrec-aggressive -Ppeval-opt => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmpjxbCEz.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmpjxbCEz.iface'...success
+External call to malloc
+External call to printf
+External call to __occam_spec.add_three(0x4,0x4)
+External call to printf
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc
+## External calls:
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+	__occam_spec.add_three(0x4,0x4)()
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmpjxbCEz.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc
+Reading interface from '/tmp/tmpjxbCEz.iface'...success
+External call to malloc
+External call to printf
+External call to __occam_spec.add_three(0x4,0x4)
+External call to printf
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc
+## External calls:
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+	__occam_spec.add_three(0x4,0x4)()
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpjxbCEz.iface -Pinterface-entry /tmp/tmpjxbCEz.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output library.so.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=nonrec-aggressive
+
+Reading file 'interface_before.02.iface'...success
+ === Begin inter-module specialization ===
+Read 7interface entries.
+SpecializeComponent()
+No specialization took place
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output library.so.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=nonrec-aggressive WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output main.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=nonrec-aggressive
+
+Reading file 'interface_before.02.iface'...success
+ === Begin inter-module specialization ===
+Read 7interface entries.
+SpecializeComponent()
+No specialization took place
+ === End inter-module specialization ===
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.bc -Pspecialize -Pspecialize-output main.02.rw -Pspecialize-input interface_before.02.iface -Pspecialize-policy=nonrec-aggressive WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input main.02.rw
+
+InterRewriterPass()
+Reading file 'main.02.rw'...success
+Done reading (0 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input main.02.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input library.so.02.rw
+
+InterRewriterPass()
+Reading file 'library.so.02.rw'...success
+Done reading (0 rewrites)
+InterRewriterPass:runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc -Prewrite -Prewrite-input library.so.02.rw => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.03.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output library.so.03.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.03.iface
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output main.03.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.03.iface -Pinternalize-wrt-interfaces main.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc
+## External calls:
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	malloc
+	printf
+
+InternalizePass
+Reading file 'main.03.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc
+Internalizing 'add_three' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 1 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.03.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.03.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.03.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.03.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmpbHK3R_.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmpbHK3R_.iface'...success
+External call to malloc
+External call to printf
+External call to __occam_spec.add_three(0x4,0x4)
+External call to printf
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+	__occam_spec.add_three(0x4,0x4)()
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmpbHK3R_.iface'...success
+Generated interface for /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+Reading interface from '/tmp/tmpbHK3R_.iface'...success
+External call to malloc
+External call to printf
+External call to __occam_spec.add_three(0x4,0x4)
+External call to printf
+Added reference to function printf
+Added reference to function malloc
+Added reference to function __occam_spec.add_three(0x4,0x4)
+Generated interface for /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+## External calls:
+	printf(S:898401CB)
+	printf(S:353E44A8,?)
+	malloc(0x28)
+	__occam_spec.add_three(0x4,0x4)()
+## External symbols:
+	__occam_spec.add_three(0x4,0x4)
+	malloc
+	printf
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbHK3R_.iface -Pinterface-entry /tmp/tmpbHK3R_.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface
+
+InternalizePass
+Reading file 'interface_after.02.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface
+
+InternalizePass
+Reading file 'interface_after.02.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.bc -o=/home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.02.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.bc -o /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.bc -o /home/test/simple-c/funcs/2/slash/library.so.i.p.s.r.i.h.p.s.r.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -o /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.bc -o /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.x.bc -o main
+
+/tmp/main-593aca.o: In function `main':
+llvm-link:(.text+0x6c): undefined reference to `__occam_spec.add_three(0x4,0x4)'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+EXECUTED: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.x.bc -o main WHICH RETURNED 1
+
+ERROR: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/funcs/2/slash/main.a.i.p.s.r.i.h.p.s.r.i.h.x.bc -o main
+returned 1

@@ -1,0 +1,8 @@
+{ "main" : "main.o.bc"
+, "binary"  : "main"
+, "modules"    : ["call.o.bc"]
+, "native_libs" : []
+, "ldflags"  : []
+, "static_args"    : ["argv1"]
+, "name"    : "main"
+}

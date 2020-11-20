@@ -1,0 +1,102 @@
+>> /usr/local/bin/slash --no-strip --use-pointer-analysis --work-dir=slash multiple.manifest
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments
+
+main function has incorrect signature
+i32 ()Ignoring...
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.bc -o=/dev/null -Pinterface -Pinterface-output main_static.01.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.bc
+Generated interface for /home/test/simple-c/funcs/8/slash/main_static.a.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.bc -o=/dev/null -Pinterface -Pinterface-output main_static.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.bc
+Internalizing 'get_callback' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 1 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/8/slash/main_static.a.i.bc -o /tmp/tmpVS6BrE.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/test/simple-c/funcs/8/slash/main_static.a.i.bc -o /tmp/tmpVS6BrE.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpVS6BrE.bc -o=/tmp/tmpa11HS2.bc -Pdevirt -sea-dsa-type-aware=true -Pdevirt-with-cha
+
+Results of the Class Hierarchy Analysis
+=== CHA stats===
+BRUNCH_STAT GRAPH NUMBER NODES 0
+BRUNCH_STAT GRAPH NUMBER EDGES 0
+BRUNCH_STAT GRAPH NUMBER CLOSED EDGES 0
+BRUNCH_STAT POTENTIAL VTABLES 0
+BRUNCH_STAT IDENTIFIED VTABLES 0
+BRUNCH_STAT POTENTIAL VIRTUAL CALLS 0
+BRUNCH_STAT RESOLVED VIRTUAL CALLS 0
+=== DEVIRT (Dsa+types) stats===
+BRUNCH_STAT INDIRECT CALLS 0
+BRUNCH_STAT COMPLETE CALLS 0
+BRUNCH_STAT RESOLVED CALLS 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpVS6BrE.bc -o=/tmp/tmpa11HS2.bc -Pdevirt -sea-dsa-type-aware=true -Pdevirt-with-cha => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-with-seadsa --sea-dsa-type-aware=true -Pinterface-output /tmp/tmpN5dc6U.iface -Pinterface-entry /tmp/tmpN5dc6U.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc
+Reading interface from '/tmp/tmpN5dc6U.iface'...success
+Generated interface for /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-with-seadsa --sea-dsa-type-aware=true -Pinterface-output /tmp/tmpN5dc6U.iface -Pinterface-entry /tmp/tmpN5dc6U.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output main_static.02.iface
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output main_static.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc
+Generated interface for /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc
+## External calls:
+## External symbols:
+
+InternalizePass
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc
+Internalizing 'incr' ExternalLinkage DefaultVisibility
+...progress...
+Progress: internalized functions = 1 internalized globals = 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-with-seadsa --sea-dsa-type-aware=true -Pinterface-output /tmp/tmpWPZ56l.iface -Pinterface-entry /tmp/tmpWPZ56l.iface
+
+GatherInterfacePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc
+Reading interface from '/tmp/tmpWPZ56l.iface'...success
+Generated interface for /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-with-seadsa --sea-dsa-type-aware=true -Pinterface-output /tmp/tmpWPZ56l.iface -Pinterface-entry /tmp/tmpWPZ56l.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule: /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.bc -o=/home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.h.bc -o main_static
+
+EXECUTED: /usr/lib/llvm-10/bin/clang++ /home/test/simple-c/funcs/8/slash/main_static.a.i.p.i.h.bc -o main_static WHICH RETURNED 0
+

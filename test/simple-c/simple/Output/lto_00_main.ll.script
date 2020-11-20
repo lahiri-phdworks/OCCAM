@@ -1,0 +1,2 @@
+set -o pipefail;{ : 'RUN: at line 1';   cd /home/test/simple-c/funcs/7 &&  ./build.sh slash-main; } &&
+{ : 'RUN: at line 2';   /usr/lib/llvm-10/bin/llvm-as < ./slash-main/main.o-final.ll | /usr/lib/llvm-10/bin/llvm-dis | FileCheck /home/test/simple/lto_00_main.ll; }

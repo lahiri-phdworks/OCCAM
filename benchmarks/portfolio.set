@@ -8,7 +8,7 @@
         {
             "dirname" : "examples/portfolio/readelf", 
             "execname": "readelf",
-	    "enabled" : "true"	    
+	    "enabled" : "false"	    
         },
         {
             "dirname" : "examples/portfolio/openssh", 

@@ -1,0 +1,9 @@
+{ "main" : "tree.bc"
+, "binary"  : "tree"
+, "modules"    : []
+, "native_libs" : []
+, "ldflags" : [ "-O2" ]
+, "name"    : "tree"
+, "static_args" : ["-J", "-h"]
+, "dynamic_args" : "1"
+}
