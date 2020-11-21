@@ -32,7 +32,6 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-
 /**
  * Specialize all the main's argv parameters wrt the values given by
  * the manifest. The manifest can provide all argv values or some.
@@ -68,7 +67,7 @@ public:
   }
   virtual bool runOnModule(llvm::Module &M);
 };
-}
+} // namespace previrt
 
 using namespace llvm;
 using namespace previrt;
@@ -228,7 +227,6 @@ bool CommandLineArguments::runOnModule(Module &M) {
     errs() << "No argc given in the manifest so specialization might not take "
               "place\n";
   }
-  
 
   // new argv
 
@@ -250,8 +248,8 @@ bool CommandLineArguments::runOnModule(Module &M) {
       ConstantInt::get(intptrty, M.getDataLayout().getPointerSize(), false);
 
   Value *new_argc_plus_one =
-    builder.CreateAdd(new_argc, ConstantInt::get(new_argc->getType(), 1));
-  
+      builder.CreateAdd(new_argc, ConstantInt::get(new_argc->getType(), 1));
+
   // Add the following instruction at the back of entry:
   //    strty p = (strty) malloc(sizeof(type) * array_sz)
   //
@@ -268,7 +266,7 @@ bool CommandLineArguments::runOnModule(Module &M) {
       /*sizeof(type)*/
       ptrSz,
       /*array_sz*/
-      builder.CreateSExtOrTrunc(new_argc_plus_one,intptrty),
+      builder.CreateSExtOrTrunc(new_argc_plus_one, intptrty),
       (Function *)nullptr);
   entry->getInstList().push_back(cast<Instruction>(new_argv));
 
@@ -278,7 +276,7 @@ bool CommandLineArguments::runOnModule(Module &M) {
   ++it;
   builder.SetInsertPoint(entry, it);
 
-  // copy the manifest into new_argv  
+  // copy the manifest into new_argv
   unsigned i = 0;
   for (auto &kv : argv_map) {
     // create a global variable with the argument from the manifest
@@ -295,10 +293,11 @@ bool CommandLineArguments::runOnModule(Module &M) {
 
   // --- This is ensured by the C standard and getopt relies on this
   // new_argv[new_argc] = NULL
-  builder.CreateStore(Constant::getNullValue(
-			 cast<PointerType>(new_argv->getType())->getElementType()),
-		      builder.CreateInBoundsGEP(new_argv, new_argc));
-		      
+  builder.CreateStore(
+      Constant::getNullValue(
+          cast<PointerType>(new_argv->getType())->getElementType()),
+      builder.CreateInBoundsGEP(new_argv, new_argc));
+
   /* Loop that copies argv into new_argv starting at index k
 
     Before
@@ -385,5 +384,5 @@ char CommandLineArguments::ID = 0;
 
 static RegisterPass<previrt::CommandLineArguments>
     X("Pcmdline-spec",
-      "Specialization of main arguments (argv) based on manifest",
-      false, false);
+      "Specialization of main arguments (argv) based on manifest", false,
+      false);

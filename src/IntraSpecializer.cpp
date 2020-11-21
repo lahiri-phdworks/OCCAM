@@ -306,12 +306,12 @@ bool SpecializerPass::runOnModule(Module &M) {
     errs() << "...progress...\n";
     errs() << "Specialized " << specialized_functions << " functions.\n";
   } else {
-    /// HACK: do not remove this line. The python code searches for it ...    
-    errs() << "...no progress...\n";    
+    /// HACK: do not remove this line. The python code searches for it ...
+    errs() << "...no progress...\n";
     errs() << "No specialization took place\n";
   }
 
-  errs() << " === End intra-module specialization ===\n";  
+  errs() << " === End intra-module specialization ===\n";
   return modified;
 }
 
@@ -321,8 +321,7 @@ void SpecializerPass::getAnalysisUsage(AnalysisUsage &AU) const {
 }
 
 SpecializerPass::SpecializerPass(bool opt)
-    : ModulePass(SpecializerPass::ID), optimize(opt) {
-}
+    : ModulePass(SpecializerPass::ID), optimize(opt) {}
 
 SpecializerPass::~SpecializerPass() {}
 

@@ -44,8 +44,8 @@
 
 #include "Interfaces.h"
 
-#include "seadsa/InitializePasses.hh"
 #include "seadsa/CompleteCallGraph.hh"
+#include "seadsa/InitializePasses.hh"
 
 #include <fstream>
 #include <set>
@@ -67,10 +67,9 @@ static cl::list<std::string> GatherInterfaceEntry(
 // We should use always seadsa callgraph because it will be more
 // precise. However, it might be slower to compute so that's why by
 // default we use LLVM callgraph.
-static cl::opt<bool> UseSeaDsa(
-    "Pinterface-with-seadsa", 
-    cl::desc("Use the callgraph computed by seadsa"),
-    cl::init(false));
+static cl::opt<bool> UseSeaDsa("Pinterface-with-seadsa",
+                               cl::desc("Use the callgraph computed by seadsa"),
+                               cl::init(false));
 
 namespace previrt {
 
@@ -132,7 +131,7 @@ public:
   virtual bool runOnModule(Module &M) {
     /*
      * Compute an interface from M's call graph.
-     * 
+     *
      * Keep in mind the following facts from a LLVM CallGraph:
      *
      * - Nodes in a CallGraph are functions plus two special nodes:
@@ -143,31 +142,30 @@ public:
      * - If function F is not internal and its address can be taken
      *   then there is an edge from CallGraph::getExternalCallingNode
      *   to F
-     * 
+     *
      * - If function F has an indirect call or external call then
      *   there is an edge from F to CallGraph::getCallsExternalNode()
      */
-    
+
     CallGraph *cg = nullptr;
     if (UseSeaDsa) {
-      cg = &getAnalysis<seadsa::CompleteCallGraph>().getCompleteCallGraph();      
+      cg = &getAnalysis<seadsa::CompleteCallGraph>().getCompleteCallGraph();
     } else {
       cg = &getAnalysis<CallGraphWrapperPass>().getCallGraph();
     }
 
-    errs() << "GatherInterfacePass::runOnModule: "
-	   << M.getModuleIdentifier()
+    errs() << "GatherInterfacePass::runOnModule: " << M.getModuleIdentifier()
            << "\n";
 
-    #if 0
+#if 0
     if (UseSeaDsa) {
       errs() << "#=========== SeaDsa CallGraph =========#\n";      
     } else {
       errs() << "#=========== LLVM CallGraph =========#\n";
     }
     cg->print(llvm::errs());
-    #endif
-    
+#endif
+
     // Add all nodes in llvm.compiler.used and llvm.used
     // *** This is very important for correctly compiling libc
     static const char *used_vars[2] = {"llvm.compiler.used", "llvm.used"};
@@ -206,7 +204,7 @@ public:
     // -- Initialize worklist with entry points of the current module
     if (!GatherInterfaceEntry.empty()) {
       ComponentInterface ci;
-      for (auto interfaceName: GatherInterfaceEntry) {
+      for (auto interfaceName : GatherInterfaceEntry) {
         errs() << "Reading interface from '" << interfaceName << "'...";
         if (ci.readFromFile(interfaceName)) {
           errs() << "success\n";
@@ -214,7 +212,7 @@ public:
           errs() << "failed\n";
         }
       }
-      for (auto FH: llvm::make_range(ci.begin(), ci.end())) {
+      for (auto FH : llvm::make_range(ci.begin(), ci.end())) {
         if (Function *f = M.getFunction(FH)) {
           worklist.push_back(cg->getOrInsertFunction(f));
         }
@@ -223,7 +221,7 @@ public:
       worklist.push_back(cg->getExternalCallingNode());
     }
 
-    std::set<CallGraphNode*> visited; // break cycles
+    std::set<CallGraphNode *> visited; // break cycles
     while (!worklist.empty()) {
       CallGraphNode *cgn = worklist.back();
       worklist.pop_back();
@@ -237,7 +235,7 @@ public:
       // 	// If we are here is because an external or indirect call
       // 	// call. Add all the entries of the call graph
       // 	// (CallGraph::getExternalCallingNode) in the worklist.
-	
+
       //   cgn = cg->getExternalCallingNode();
       //   if (visited.find(cgn) != visited.end()) {
       //     continue;
@@ -245,7 +243,7 @@ public:
       // }
 
       // -- Process edges in the callgraph.
-      // 
+      //
       // A callRecord is a pair of a (callsite, CallGraphNode). The
       // first element of the pair can be null when the source node is
       // getExternalCallingNode()
@@ -253,25 +251,25 @@ public:
         Value *calledV = stripBitCast(callRecord.first);
         if (!calledV) {
           assert(cgn == cg->getExternalCallingNode());
-	  if (isInternal(callRecord.second->getFunction())) {
-	    // Entry point of the module
-	    interface.callFrom(callRecord.second->getFunction());
-	  }
+          if (isInternal(callRecord.second->getFunction())) {
+            // Entry point of the module
+            interface.callFrom(callRecord.second->getFunction());
+          }
         } else {
           CallSite CS(calledV);
           const Function *callee = callRecord.second->getFunction();
-	  if (callee) {
-	    // -- Direct call
-	    if (!isInternal(callee)) {
-	      errs() << "External call to "
-		     << callRecord.second->getFunction()->getName() << "\n";
-	      // Record a known external call
-	      interface.callTo(callee->getName(), CS.arg_begin(), CS.arg_end());
-	      continue;
-	    }
-	  } else {
-	    // -- Indirect call: we don't know the callee
-	  }
+          if (callee) {
+            // -- Direct call
+            if (!isInternal(callee)) {
+              errs() << "External call to "
+                     << callRecord.second->getFunction()->getName() << "\n";
+              // Record a known external call
+              interface.callTo(callee->getName(), CS.arg_begin(), CS.arg_end());
+              continue;
+            }
+          } else {
+            // -- Indirect call: we don't know the callee
+          }
         }
 
         if (visited.insert(cgn).second) {
@@ -281,7 +279,7 @@ public:
     }
 
     // -- Record all external symbols of the current module
-    
+
     // functions
     for (Function &F : llvm::make_range(M.begin(), M.end())) {
       if (F.isDeclaration() && !F.isIntrinsic()) {
@@ -308,7 +306,7 @@ public:
 
     errs() << "Generated interface for " << M.getModuleIdentifier() << "\n";
     errs() << interface << "\n";
-    
+
     if (GatherInterfaceOutput != "") {
       proto::ComponentInterface ci;
       codeInto<ComponentInterface, proto::ComponentInterface>(interface, ci);
@@ -330,7 +328,4 @@ char GatherInterfacePass::ID;
 } // end namespace previrt
 
 static RegisterPass<previrt::GatherInterfacePass>
-    X("Pinterface",
-      "Compute the interface for a LLVM module",
-      false,
-      false);
+    X("Pinterface", "Compute the interface for a LLVM module", false, false);

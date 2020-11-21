@@ -1,0 +1,14 @@
+{
+    "benchmarks": [
+        {
+            "dirname" : "examples/sample", 
+            "execname": "example",
+	        "enabled" : "false"
+        },
+        {
+            "dirname" : "examples/modules", 
+            "execname": "main",
+	        "enabled" : "true"
+        }
+    ]
+}

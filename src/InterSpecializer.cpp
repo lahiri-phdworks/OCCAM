@@ -66,19 +66,21 @@ using namespace llvm;
 
 static cl::opt<previrt::SpecializationPolicyType> SpecPolicy(
     "Pspecialize-policy", cl::desc("Inter-module specialization policy"),
-    cl::values(
-        clEnumValN(previrt::SpecializationPolicyType::NOSPECIALIZE,
-                   "nospecialize", "Skip inter-module specialization"),
-        clEnumValN(previrt::SpecializationPolicyType::AGGRESSIVE, "aggressive",
-                   "Specialize always if some constant argument"),
-        clEnumValN(previrt::SpecializationPolicyType::ONLY_ONCE, "onlyonce",
-                   "Specialize a function if it is called once"),
-        clEnumValN(previrt::SpecializationPolicyType::BOUNDED, "bounded",
-                   "Always specialize if number of copies so far <= "
-                   "Ppeval-max-spec-copies"),
-        clEnumValN(previrt::SpecializationPolicyType::NONREC,
-                   "nonrec-aggressive", "Specialize always if some constant "
-                                        "arg and function is non-recursive")),
+    cl::values(clEnumValN(previrt::SpecializationPolicyType::NOSPECIALIZE,
+                          "nospecialize", "Skip inter-module specialization"),
+               clEnumValN(previrt::SpecializationPolicyType::AGGRESSIVE,
+                          "aggressive",
+                          "Specialize always if some constant argument"),
+               clEnumValN(previrt::SpecializationPolicyType::ONLY_ONCE,
+                          "onlyonce",
+                          "Specialize a function if it is called once"),
+               clEnumValN(previrt::SpecializationPolicyType::BOUNDED, "bounded",
+                          "Always specialize if number of copies so far <= "
+                          "Ppeval-max-spec-copies"),
+               clEnumValN(previrt::SpecializationPolicyType::NONREC,
+                          "nonrec-aggressive",
+                          "Specialize always if some constant "
+                          "arg and function is non-recursive")),
     cl::init(previrt::SpecializationPolicyType::NONREC));
 
 static cl::opt<unsigned>
@@ -131,16 +133,16 @@ static bool SpecializeComponent(Module &M, ComponentInterfaceTransform &T,
   // TODO: What needs to be done?
   // - Should try to handle strings & arrays
   // Iterate through all functions in the interface of T
-  for (auto fName: llvm::make_range(I.begin(), I.end())) {
+  for (auto fName : llvm::make_range(I.begin(), I.end())) {
     Function *func = resolveFunction(M, fName);
     if (!func || func->isDeclaration()) {
       continue;
     }
 
     // Now iterate through all calls to func in the interface of T
-    for (const CallInfo* call: llvm::make_range(I.call_begin(fName),
-						I.call_end(fName))) {
-      
+    for (const CallInfo *call :
+         llvm::make_range(I.call_begin(fName), I.call_end(fName))) {
+
       const unsigned arg_count = call->num_args();
       if (func->isVarArg()) {
         continue;
@@ -159,7 +161,7 @@ static bool SpecializeComponent(Module &M, ComponentInterfaceTransform &T,
        */
       SmallBitVector marks(arg_count);
       bool shouldSpecialize =
-	policy.interSpecializeOn(*func, call->get_args(), I, marks);
+          policy.interSpecializeOn(*func, call->get_args(), I, marks);
 
       if (!shouldSpecialize)
         continue;
@@ -222,7 +224,7 @@ static bool SpecializeComponent(Module &M, ComponentInterfaceTransform &T,
   }
   return rewrite_count > 0;
 }
-}
+} // namespace previrt
 
 namespace previrt {
 
@@ -233,7 +235,7 @@ public:
 
 public:
   InterSpecializerPass() : ModulePass(ID) {
-    for (auto fileName: SpecCompIn) {
+    for (auto fileName : SpecCompIn) {
       errs() << "Reading file '" << fileName << "'...";
       if (transform.readInterfaceFromFile(fileName)) {
         errs() << "success\n";
@@ -247,16 +249,15 @@ public:
 
   virtual bool runOnModule(Module &M) {
     if (!transform.hasInterface()) {
-      errs() << "No interfaces read.\n";      
+      errs() << "No interfaces read.\n";
       return false;
     }
-    
-    errs() << " === Begin inter-module specialization ===\n";      
+
+    errs() << " === Begin inter-module specialization ===\n";
     const ComponentInterface &interface = transform.getInterface();
-    errs() << "Read " 
-	   << std::distance(interface.begin(), interface.end())
-	   << "interface entries.\n";
-    
+    errs() << "Read " << std::distance(interface.begin(), interface.end())
+           << "interface entries.\n";
+
     // -- Create the specialization policy. Bail out if no policy.
     std::unique_ptr<SpecializationPolicy> policy;
     switch (SpecPolicy) {
@@ -308,7 +309,7 @@ public:
       } else {
         errs() << "Adding \"" << add->getName() << "\" to the module.\n";
         functionList.push_back(add);
-	specialized_functions++;
+        specialized_functions++;
       }
     }
 
@@ -330,8 +331,8 @@ public:
       errs() << "Specialized " << specialized_functions << "\n";
     } else {
       errs() << "No specialization took place\n";
-    }    
-    errs() << " === End inter-module specialization ===\n";      
+    }
+    errs() << " === End inter-module specialization ===\n";
 
     return modified;
   }

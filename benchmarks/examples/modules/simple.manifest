@@ -1,0 +1,7 @@
+{ "main" : "main.o.bc"
+, "binary"  : "main"
+, "modules"    : ["library.so.bc",  "module.o.bc"]
+, "native_libs" : []
+, "static_args"    : ["8181"]
+, "name"    : "main"
+}

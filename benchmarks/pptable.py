@@ -2,6 +2,7 @@
 import locale
 locale.setlocale(locale.LC_NUMERIC, "")
 
+
 def format_num(num):
     """Format a number according to given places.
     Adds commas, etc. Will truncate floats into ints!"""
@@ -13,10 +14,12 @@ def format_num(num):
     except (ValueError, TypeError):
         return str(num)
 
+
 def get_max_width(table, index):
     """Get the maximum width of the given column index"""
 
     return max([len(format_num(row[index])) for row in table])
+
 
 def pprint_table(out, table):
     """Prints out a table of data, padded for alignment

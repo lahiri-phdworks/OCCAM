@@ -40,10 +40,12 @@ import sys
 
 from .proto import Previrt_pb2 as pb
 
+
 def emptyInterface():
     """ Returns an empty interface.
     """
     return pb.ComponentInterface()
+
 
 def parseInterface(filename):
     """ Parses the filename as an interface.
@@ -54,6 +56,7 @@ def parseInterface(filename):
     else:
         result.ParseFromString(open(filename, 'rb').read())
     return result
+
 
 def writeInterface(iface, filename):
     """ Writes the innterface out to the file.
@@ -68,6 +71,7 @@ def writeInterface(iface, filename):
     f.write(iface.SerializeToString())
     f.close()
 
+
 def mainInterface():
     """ Returns the interface for main.
     """
@@ -77,7 +81,7 @@ def mainInterface():
     c.args.add(type=pb.U)
     main.references.extend('main')
 
-    #iam 11/15/2016 these don't seem to be really necessary;
+    # iam 11/15/2016 these don't seem to be really necessary;
     # or if they are necessary, then there probably should be
     # a lot more, no?
     atexit = main.calls.add(name='atexit', count=1)
@@ -85,7 +89,7 @@ def mainInterface():
     main.references.extend('atexit')
 
     #inittls = main.calls.add(name='_init_tls', count=1)
-    #iam: no inittls.args.add ???
+    # iam: no inittls.args.add ???
     main.calls.add(name='_init_tls', count=1)
     main.references.extend('_init_tls')
 
@@ -94,6 +98,7 @@ def mainInterface():
     main.references.extend('exit')
 
     return main
+
 
 def joinInterfaces(into, merge):
     """ Merges the first interface into the second.
@@ -116,6 +121,7 @@ def joinInterfaces(into, merge):
             into.references.append(mr)
             result = True
     return result
+
 
 def readInterfaceFromText(f):
     """ parses the lines of f as an interface.
