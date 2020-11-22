@@ -1,7 +1,7 @@
 
 #iam: producing the library varies from OS to OS
 OS   =  $(shell uname)
-
+CC=gclang 
 LIBRARYNAME=library
 
 ifeq (Darwin, $(findstring Darwin, ${OS}))

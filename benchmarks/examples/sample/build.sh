@@ -23,7 +23,7 @@ cat > example.manifest <<EOF
 EOF
 
 #make the bitcode
-CC=gclang make 
+CC=gclang make all  
 get-bc example.o
 get-bc ${LIBRARY}
 

@@ -154,8 +154,8 @@ public:
       cg = &getAnalysis<CallGraphWrapperPass>().getCallGraph();
     }
 
-    errs() << "GatherInterfacePass::runOnModule: " << M.getModuleIdentifier()
-           << "\n";
+    errs() << "GatherInterfacePass::runOnModule:OCCAM::"
+           << M.getModuleIdentifier() << "\n";
 
 #if 0
     if (UseSeaDsa) {

@@ -80,21 +80,21 @@ static Value *stripBitCastCE(Constant *C) {
 // used in *other* compilation units.
 static bool isDiscardableIfUnusedExternally(GlobalValue &GV) {
   GlobalValue::LinkageTypes Linkage = GV.getLinkage();
-  return (// Ignore local linkages since the linker does not resolve them
-	  !(GlobalValue::isLocalLinkage(Linkage)) && 
-	  // Ignore appending linkage values since the linker
-	  // doesn't resolve them.	  
-	  Linkage != GlobalValue::AppendingLinkage &&
-	  // We can't internalize available_externally globals because this
-	  // can break function pointer equality.
-	  Linkage != GlobalValue::AvailableExternallyLinkage &&
-	  // We don't internalize if the global can be replaced with
-	  // something non-equivalent
-	  !GlobalValue::isInterposableLinkage(Linkage));
+  return ( // Ignore local linkages since the linker does not resolve them
+      !(GlobalValue::isLocalLinkage(Linkage)) &&
+      // Ignore appending linkage values since the linker
+      // doesn't resolve them.
+      Linkage != GlobalValue::AppendingLinkage &&
+      // We can't internalize available_externally globals because this
+      // can break function pointer equality.
+      Linkage != GlobalValue::AvailableExternallyLinkage &&
+      // We don't internalize if the global can be replaced with
+      // something non-equivalent
+      !GlobalValue::isInterposableLinkage(Linkage));
 
   // FIXME: There is an extra condition that we are not currently
   // checking but LTO.cpp does:
-  // 
+  //
   // Functions and read-only variables with linkonce_odr and
   // weak_odr linkage can be internalized. We can't internalize
   // linkonce_odr and weak_odr variables which are both modified
@@ -103,44 +103,60 @@ static bool isDiscardableIfUnusedExternally(GlobalValue &GV) {
 }
 
 static bool setInternalLinkage(GlobalValue &GV) {
-  
+
   auto printLinkage = [](GlobalValue &V, llvm::raw_ostream &o) {
-    switch(V.getLinkage()) {
+    switch (V.getLinkage()) {
     case GlobalValue::ExternalLinkage:
-    o << "ExternalLinkage"; break;
+      o << "ExternalLinkage";
+      break;
     case GlobalValue::AvailableExternallyLinkage:
-    o << "AvailableExternallyLinkage"; break;    
+      o << "AvailableExternallyLinkage";
+      break;
     case GlobalValue::LinkOnceAnyLinkage:
-    o << "LinkOnceAnyLinkage"; break;
+      o << "LinkOnceAnyLinkage";
+      break;
     case GlobalValue::LinkOnceODRLinkage:
-    o << "LinkOnceODRLinkage"; break;
+      o << "LinkOnceODRLinkage";
+      break;
     case GlobalValue::WeakAnyLinkage:
-    o << "WeakAnyLinkage"; break;
+      o << "WeakAnyLinkage";
+      break;
     case GlobalValue::WeakODRLinkage:
-    o << "WeakODRLinkage"; break;
+      o << "WeakODRLinkage";
+      break;
     case GlobalValue::AppendingLinkage:
-    o << "AppendingLinkage"; break;
+      o << "AppendingLinkage";
+      break;
     case GlobalValue::InternalLinkage:
-    o << "InternalLinkage"; break;
+      o << "InternalLinkage";
+      break;
     case GlobalValue::PrivateLinkage:
-    o << "PrivateLinkage"; break;
+      o << "PrivateLinkage";
+      break;
     case GlobalValue::ExternalWeakLinkage:
-    o << "ExternalWeakLinkage"; break;
+      o << "ExternalWeakLinkage";
+      break;
     case GlobalValue::CommonLinkage:
-    o << "CommonLinkage"; break;
-    default: ;;
+      o << "CommonLinkage";
+      break;
+    default:;
+      ;
     }
   };
 
   auto printVisibility = [](GlobalValue &V, llvm::raw_ostream &o) {
-    switch(V.getVisibility()) {
+    switch (V.getVisibility()) {
     case GlobalValue::DefaultVisibility:
-    o << "DefaultVisibility"; break;
+      o << "DefaultVisibility";
+      break;
     case GlobalValue::HiddenVisibility:
-    o << "HiddenVisibility"; break;    
+      o << "HiddenVisibility";
+      break;
     case GlobalValue::ProtectedVisibility:
-    o << "ProtectedVisibility"; break;
-    default: ;;
+      o << "ProtectedVisibility";
+      break;
+    default:;
+      ;
     }
   };
 
@@ -148,27 +164,26 @@ static bool setInternalLinkage(GlobalValue &GV) {
   printLinkage(GV, llvm::errs());
   errs() << " ";
   printVisibility(GV, llvm::errs());
-  errs() << "\n";    
+  errs() << "\n";
   GV.setLinkage(GlobalValue::InternalLinkage);
   return true;
 }
 
-class InternalizePass: public ModulePass {
+class InternalizePass : public ModulePass {
 public:
   // The current module is internalized with respect to m_interfaces
   ComponentInterface m_interfaces;
-  
+
   static char ID;
 
   bool MinimizeComponent(Module &M);
-  
+
 public:
-  
   InternalizePass() : ModulePass(ID) {}
   virtual ~InternalizePass() = default;
 
   virtual bool runOnModule(Module &M) {
-    
+
     errs() << "InternalizePass\n";
     for (std::string input : Interfaces) {
       errs() << "Reading file '" << input << "'...";
@@ -179,17 +194,17 @@ public:
       }
     }
     errs() << "Done reading.\n";
-    
+
     return MinimizeComponent(M);
   }
 
   virtual void getAnalysisUsage(AnalysisUsage &AU) const {}
 };
-  
+
 /*
  * Remove unused code after considering dependencies with other
  * modules.
- * 
+ *
  * IMPORTANT: the caller must ensure that the m_interfaces reflects
  * all possible direct calls to M's functions.
  *
@@ -198,12 +213,13 @@ public:
  * 1) Make internal any function or global if no direct call or
  * reference to them from other modules **and** its address hasn't
  * been taken (this last part take care of indirect calls).
- * 
+ *
  * 2) Leverage LLVM dead code elimination.
  */
 bool InternalizePass::MinimizeComponent(Module &M) {
 
-  errs() << "InternalizePass::runOnModule: " << M.getModuleIdentifier() << "\n";
+  errs() << "InternalizePass::runOnModule:OCCAM:: " << M.getModuleIdentifier()
+         << "\n";
 
   bool modified = false;
   // for stats
@@ -267,9 +283,9 @@ bool InternalizePass::MinimizeComponent(Module &M) {
         isDiscardableIfUnusedExternally(f) &&
         // No other compilation unit calls f
         !m_interfaces.hasCall(f.getName()) &&
-	// The address of f has not been taken
-	!f.hasAddressTaken() &&
-	// No other compilation unit mentions f
+        // The address of f has not been taken
+        !f.hasAddressTaken() &&
+        // No other compilation unit mentions f
         !m_interfaces.hasReference(f.getName()) &&
         // there is no an alias to f that we want to keep
         !keepAliasees.count(&f)) {
@@ -291,9 +307,9 @@ bool InternalizePass::MinimizeComponent(Module &M) {
     }
 
     if (gv.hasInitializer() &&
-        // global is unused 
+        // global is unused
         !m_interfaces.hasReference(gv.getName()) &&
-	// global can be removed if unused
+        // global can be removed if unused
         isDiscardableIfUnusedExternally(gv) &&
         // there is no an alias to the global that we want to keep
         !keepAliasees.count(&gv)) {
@@ -317,7 +333,7 @@ bool InternalizePass::MinimizeComponent(Module &M) {
   }
 
   if (!modified) {
-    /// HACK: do not remove this line. The python code searches for it ...            
+    /// HACK: do not remove this line. The python code searches for it ...
     errs() << "...no progress...\n";
     return false;
   }
@@ -349,15 +365,14 @@ bool InternalizePass::MinimizeComponent(Module &M) {
     errs() << "MergeConstants still had more to do\n";
   }
 
-  /// HACK: do not remove this line. The python code searches for it ...      
+  /// HACK: do not remove this line. The python code searches for it ...
   errs() << "...progress...\n";
-  
+
   errs() << "Progress:"
          << " internalized functions = " << internalized_functions
          << " internalized globals = " << internalized_globals << "\n";
   return true;
 }
-
 
 char InternalizePass::ID;
 } // end namespace previrt

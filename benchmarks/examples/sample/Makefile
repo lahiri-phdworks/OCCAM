@@ -1,5 +1,6 @@
 OS   =  $(shell uname)
 LIBRARYNAME=example
+CC=gclang 
 
 ifeq (Darwin, $(findstring Darwin, ${OS}))
 #  DARWIN
@@ -25,5 +26,6 @@ example:  ${OBJS} ${LIB}
 	${CC}  ${CFLAGS}  ${OBJS} -o example ${LIB}
 
 clean:
+	rm -f .example.c .example.c.o
 	rm -f *~ ${LIB} .*.bc *.bc *.ll *.o *.manifest example
 	rm -rf slash example_slash

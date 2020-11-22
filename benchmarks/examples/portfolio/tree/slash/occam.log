@@ -1,8 +1,8 @@
 >> /usr/local/bin/slash --inter-spec-policy=onlyonce --intra-spec-policy=onlyonce --no-strip --stats --work-dir=slash readelf.manifest.constraints
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmp6a2jmy
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmp78JV80
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmp6a2jmy WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmp78JV80 WHICH RETURNED 0
 
 EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.bc -o=/home/benchmarks/examples/portfolio/tree/slash/tree.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments
 
@@ -10,7 +10,7 @@ EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/li
 
 EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.bc -o=/dev/null -Pinterface -Pinterface-output tree.01.iface
 
-GatherInterfacePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.bc
+GatherInterfacePass::runOnModule:OCCAM /home/benchmarks/examples/portfolio/tree/slash/tree.a.bc
 External call to strcoll
 Added reference to function strcoll
 Added reference to function malloc
@@ -122,7 +122,7 @@ EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/l
 InternalizePass
 Reading file 'main.iface'...success
 Done reading.
-InternalizePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.bc
+InternalizePass::runOnModule:OCCAM/home/benchmarks/examples/portfolio/tree/slash/tree.a.bc
 Internalizing '' ExternalLinkage DefaultVisibility
 Internalizing 'usage' ExternalLinkage DefaultVisibility
 Internalizing 'printit' ExternalLinkage DefaultVisibility
@@ -205,11 +205,11 @@ Internalizing 'ext' ExternalLinkage DefaultVisibility
 Progress: internalized functions = 37 internalized globals = 41
 /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.bc -o=/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.iface => 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.bc -o /tmp/tmpx6lwAk.bc -O3
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.bc -o /tmp/tmpz7iFXq.bc -O3
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.bc -o /tmp/tmpx6lwAk.bc -O3 WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.bc -o /tmp/tmpz7iFXq.bc -O3 WHICH RETURNED 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpIaXAkI.bc -o=/tmp/tmpYb_p04.bc -Ppeval -Ppeval-policy=onlyonce -Ppeval-opt
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpI1Njvz.bc -o=/tmp/tmpydeOY5.bc -Ppeval -Ppeval-policy=onlyonce -Ppeval-opt
 
 === Begin intra-module specialization ===
 ## Running only-once specialization policy
@@ -217,12 +217,12 @@ There are 22 functions that are called more than once and 91 functions called on
 ...no progress...
 No specialization took place
  === End intra-module specialization ===
-/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpIaXAkI.bc -o=/tmp/tmpYb_p04.bc -Ppeval -Ppeval-policy=onlyonce -Ppeval-opt => 0
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /tmp/tmpI1Njvz.bc -o=/tmp/tmpydeOY5.bc -Ppeval -Ppeval-policy=onlyonce -Ppeval-opt => 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCi2abY.iface -Pinterface-entry /tmp/tmpCi2abY.iface
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBAn4bt.iface -Pinterface-entry /tmp/tmpBAn4bt.iface
 
-GatherInterfacePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc
-Reading interface from '/tmp/tmpCi2abY.iface'...success
+GatherInterfacePass::runOnModule:OCCAM /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc
+Reading interface from '/tmp/tmpBAn4bt.iface'...success
 External call to malloc
 External call to malloc
 External call to fwrite
@@ -649,12 +649,12 @@ Generated interface for /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.
 	system
 	time
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCi2abY.iface -Pinterface-entry /tmp/tmpCi2abY.iface WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBAn4bt.iface -Pinterface-entry /tmp/tmpBAn4bt.iface WHICH RETURNED 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCi2abY.iface -Pinterface-entry /tmp/tmpCi2abY.iface
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBAn4bt.iface -Pinterface-entry /tmp/tmpBAn4bt.iface
 
-GatherInterfacePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc
-Reading interface from '/tmp/tmpCi2abY.iface'...success
+GatherInterfacePass::runOnModule:OCCAM /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc
+Reading interface from '/tmp/tmpBAn4bt.iface'...success
 External call to malloc
 External call to malloc
 External call to fwrite
@@ -1081,7 +1081,7 @@ Generated interface for /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.
 	system
 	time
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCi2abY.iface -Pinterface-entry /tmp/tmpCi2abY.iface WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpBAn4bt.iface -Pinterface-entry /tmp/tmpBAn4bt.iface WHICH RETURNED 0
 
 EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.bc -o=/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.bc -Pspecialize -Pspecialize-output tree.01.rw -Pspecialize-input interface_before.01.iface -Pspecialize-policy=onlyonce
 
@@ -1101,7 +1101,7 @@ Done reading (0 rewrites)
 
 EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.bc -o=/dev/null -Pinterface -Pinterface-output tree.02.iface
 
-GatherInterfacePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.bc
+GatherInterfacePass::runOnModule:OCCAM /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.bc
 External call to strcoll
 Added reference to function strcoll
 Added reference to function malloc
@@ -1213,17 +1213,17 @@ EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/l
 InternalizePass
 Reading file 'main.iface'...success
 Done reading.
-InternalizePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.bc
+InternalizePass::runOnModule:OCCAM/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.bc
 Internalizing 'gnu_getcwd' ExternalLinkage DefaultVisibility
 Internalizing 'parse_dir_colors' ExternalLinkage DefaultVisibility
 ...progress...
 Progress: internalized functions = 2 internalized globals = 0
 /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.bc -o=/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.iface => 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpIpYgtZ.iface -Pinterface-entry /tmp/tmpIpYgtZ.iface
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDmexB1.iface -Pinterface-entry /tmp/tmpDmexB1.iface
 
-GatherInterfacePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc
-Reading interface from '/tmp/tmpIpYgtZ.iface'...success
+GatherInterfacePass::runOnModule:OCCAM /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpDmexB1.iface'...success
 External call to malloc
 External call to malloc
 External call to fwrite
@@ -1650,12 +1650,12 @@ Generated interface for /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.
 	system
 	time
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpIpYgtZ.iface -Pinterface-entry /tmp/tmpIpYgtZ.iface WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDmexB1.iface -Pinterface-entry /tmp/tmpDmexB1.iface WHICH RETURNED 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpIpYgtZ.iface -Pinterface-entry /tmp/tmpIpYgtZ.iface
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDmexB1.iface -Pinterface-entry /tmp/tmpDmexB1.iface
 
-GatherInterfacePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc
-Reading interface from '/tmp/tmpIpYgtZ.iface'...success
+GatherInterfacePass::runOnModule:OCCAM /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc
+Reading interface from '/tmp/tmpDmexB1.iface'...success
 External call to malloc
 External call to malloc
 External call to fwrite
@@ -2082,20 +2082,20 @@ Generated interface for /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.
 	system
 	time
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpIpYgtZ.iface -Pinterface-entry /tmp/tmpIpYgtZ.iface WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpDmexB1.iface -Pinterface-entry /tmp/tmpDmexB1.iface WHICH RETURNED 0
 
 EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
 
 InternalizePass
 Reading file 'interface_after.01.iface'...success
 Done reading.
-InternalizePass::runOnModule: /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc
+InternalizePass::runOnModule:OCCAM/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc
 ...no progress...
 /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.bc -o=/home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
 
-EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmpNi9ADt
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmpyp1XLe
 
-EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmpNi9ADt WHICH RETURNED 0
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -o=/dev/null -Pprofiler -profile-verbose=false -profile-loops=true -profile-safe-pointers=true -profile-outfile=/tmp/tmpyp1XLe WHICH RETURNED 0
 
 EXECUTING: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/portfolio/tree/slash/tree.a.i.p.s.r.i.h.bc -o tree -O2
 

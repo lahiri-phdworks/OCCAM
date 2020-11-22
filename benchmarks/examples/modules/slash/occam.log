@@ -1,0 +1,1138 @@
+>> /usr/local/bin/slash --work-dir=slash simple.manifest
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/dev/null -Pinterface -Pinterface-output main.o.01.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.bc
+External call to libcall
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.bc
+## External calls:
+	atol(?)
+	atol(?)
+	libcall(?,?)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/dev/null -Pinterface -Pinterface-output main.o.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/dev/null -Pinterface -Pinterface-output module.o.01.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.bc
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/dev/null -Pinterface -Pinterface-output module.o.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.01.iface'...success
+Reading file 'module.o.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/main.o.a.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.01.iface'...success
+Reading file 'module.o.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/library.so.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.01.iface'...success
+Reading file 'library.so.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/module.o.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/main.o.a.i.bc -o /tmp/tmpF5EEo0.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/main.o.a.i.bc -o /tmp/tmpF5EEo0.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/library.so.i.bc -o /tmp/tmpKXhdpN.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/library.so.i.bc -o /tmp/tmpKXhdpN.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/module.o.i.bc -o /tmp/tmpI933Nn.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/module.o.i.bc -o /tmp/tmpI933Nn.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+Reading interface from '/tmp/tmpbLGXBZ.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmpbLGXBZ.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.bc
+Reading interface from '/tmp/tmpbLGXBZ.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+Reading interface from '/tmp/tmpbLGXBZ.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmpbLGXBZ.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.bc
+Reading interface from '/tmp/tmpbLGXBZ.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpbLGXBZ.iface -Pinterface-entry /tmp/tmpbLGXBZ.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output main.o.02.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+External call to libcall
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+## External calls:
+	atol(?)
+	atol(?)
+	libcall(?,?)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output main.o.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output module.o.02.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.bc
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output module.o.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.02.iface'...success
+Reading file 'module.o.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.02.iface'...success
+Reading file 'module.o.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.02.iface'...success
+Reading file 'library.so.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+Reading interface from '/tmp/tmpCWRCQ0.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+Reading interface from '/tmp/tmpCWRCQ0.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+Reading interface from '/tmp/tmpCWRCQ0.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+Reading interface from '/tmp/tmpCWRCQ0.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+Reading interface from '/tmp/tmpCWRCQ0.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+Reading interface from '/tmp/tmpCWRCQ0.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpCWRCQ0.iface -Pinterface-entry /tmp/tmpCWRCQ0.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -o main
+
+/tmp/main-305084.o: In function `__unnamed_1':
+llvm-link:(.text+0x1f): undefined reference to `libcall'
+llvm-link:(.text+0x40): undefined reference to `libcall'
+llvm-link:(.text+0x5c): undefined reference to `libcall'
+llvm-link:(.text+0x86): undefined reference to `internal_api'
+llvm-link:(.text+0xac): undefined reference to `internal_api'
+llvm-link:(.text+0xd1): undefined reference to `internal_api'
+/tmp/main-305084.o: In function `main':
+llvm-link:(.text+0x15a): undefined reference to `libcall'
+llvm-link:(.text+0x179): undefined reference to `libcall'
+llvm-link:(.text+0x1a5): undefined reference to `internal_api'
+llvm-link:(.text+0x1cd): undefined reference to `internal_api'
+llvm-link:(.text+0x1f4): undefined reference to `internal_api'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+EXECUTED: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -o main WHICH RETURNED 1
+
+ERROR: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -o main
+returned 1
+>> /usr/local/bin/slash --work-dir=slash simple.manifest
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.bc -Pcmdline-spec -Pcmdline-spec-input arguments WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/dev/null -Pinterface -Pinterface-output main.o.01.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.bc
+External call to libcall
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.bc
+## External calls:
+	atol(?)
+	atol(?)
+	libcall(?,?)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/dev/null -Pinterface -Pinterface-output main.o.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/dev/null -Pinterface -Pinterface-output library.so.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/dev/null -Pinterface -Pinterface-output module.o.01.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.bc
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/dev/null -Pinterface -Pinterface-output module.o.01.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.01.iface'...success
+Reading file 'module.o.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/main.o.a.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.01.iface'...success
+Reading file 'module.o.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/library.so.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces module.o.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.01.iface'...success
+Reading file 'library.so.01.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/module.o.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.01.iface -Pinternalize-wrt-interfaces library.so.01.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/main.o.a.i.bc -o /tmp/tmpqQ1HdV.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/main.o.a.i.bc -o /tmp/tmpqQ1HdV.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/library.so.i.bc -o /tmp/tmpAtvJnQ.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/library.so.i.bc -o /tmp/tmpAtvJnQ.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/module.o.i.bc -o /tmp/tmpipXBHO.bc -O3
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -disable-simplify-libcalls --disable-slp-vectorization /home/benchmarks/examples/modules/slash/module.o.i.bc -o /tmp/tmpipXBHO.bc -O3 WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+Reading interface from '/tmp/tmpQHnsdm.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmpQHnsdm.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.bc
+Reading interface from '/tmp/tmpQHnsdm.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+Reading interface from '/tmp/tmpQHnsdm.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.bc
+Reading interface from '/tmp/tmpQHnsdm.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.bc
+Reading interface from '/tmp/tmpQHnsdm.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmpQHnsdm.iface -Pinterface-entry /tmp/tmpQHnsdm.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output main.o.02.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+External call to libcall
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+## External calls:
+	atol(?)
+	atol(?)
+	libcall(?,?)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/dev/null -Pinterface -Pinterface-output main.o.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.bc
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/dev/null -Pinterface -Pinterface-output library.so.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output module.o.02.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.bc
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/dev/null -Pinterface -Pinterface-output module.o.02.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'library.so.02.iface'...success
+Reading file 'module.o.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.02.iface'...success
+Reading file 'module.o.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/library.so.i.p.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces module.o.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface
+
+InternalizePass
+Reading file 'main.o.02.iface'...success
+Reading file 'library.so.02.iface'...success
+Reading file 'main.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/module.o.i.p.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -Pinternalize -Pinternalize-wrt-interfaces main.o.02.iface -Pinternalize-wrt-interfaces library.so.02.iface -Pinternalize-wrt-interfaces main.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+Reading interface from '/tmp/tmp1Kj9cF.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+Reading interface from '/tmp/tmp1Kj9cF.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+Reading interface from '/tmp/tmp1Kj9cF.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+Reading interface from '/tmp/tmp1Kj9cF.iface'...success
+External call to malloc
+External call to atol
+External call to libcall
+External call to atol
+External call to libcall
+External call to internal_api
+External call to internal_api
+External call to internal_api
+External call to fprintf
+Added reference to function libcall
+Added reference to function atol
+Added reference to function internal_api
+Added reference to function fprintf
+Added reference to function malloc
+Added reference to global stderr
+Generated interface for /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+## External calls:
+	atol(S:4112F52)
+	atol(S:4112F52)
+	libcall(?,0x1)
+	libcall(?,0x2)
+	internal_api(0x3,?,S:B9A)
+	internal_api(0x4,null,?)
+	internal_api(0x5,?,?)
+	malloc(0x18)
+	fprintf(?,S:28FB196,?)
+## External symbols:
+	atol
+	fprintf
+	internal_api
+	libcall
+	malloc
+	stderr
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+Reading interface from '/tmp/tmp1Kj9cF.iface'...success
+External call to time
+External call to srand
+External call to rand
+Added reference to function time
+Added reference to function srand
+Added reference to function rand
+Generated interface for /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+## External calls:
+	rand()
+	srand(?)
+	time(null)
+## External symbols:
+	rand
+	srand
+	time
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface
+
+GatherInterfacePass::runOnModule:OCCAM::/home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+Reading interface from '/tmp/tmp1Kj9cF.iface'...success
+Generated interface for /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+## External calls:
+## External symbols:
+
+EXECUTED: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/dev/null -Pinterface -Pinterface-output /tmp/tmp1Kj9cF.iface -Pinterface-entry /tmp/tmp1Kj9cF.iface WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/library.so.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface
+
+InternalizePass
+Reading file 'interface_after.01.iface'...success
+Done reading.
+InternalizePass::runOnModule:OCCAM:: /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc
+...no progress...
+/usr/lib/llvm-10/bin/opt -load=/occam/lib/libSeaDsa.so -load=/occam/lib/libprevirt.so /home/benchmarks/examples/modules/slash/module.o.i.p.i.bc -o=/home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -Pinternalize -Pinternalize-wrt-interfaces interface_after.01.iface => 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/library.so.i.p.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.x.bc -strip -strip-dead-prototypes
+
+EXECUTED: /usr/lib/llvm-10/bin/opt /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.bc -o /home/benchmarks/examples/modules/slash/module.o.i.p.i.h.x.bc -strip -strip-dead-prototypes WHICH RETURNED 0
+
+EXECUTING: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -o main
+
+/tmp/main-997f7e.o: In function `__unnamed_1':
+llvm-link:(.text+0x1f): undefined reference to `libcall'
+llvm-link:(.text+0x40): undefined reference to `libcall'
+llvm-link:(.text+0x5c): undefined reference to `libcall'
+llvm-link:(.text+0x86): undefined reference to `internal_api'
+llvm-link:(.text+0xac): undefined reference to `internal_api'
+llvm-link:(.text+0xd1): undefined reference to `internal_api'
+/tmp/main-997f7e.o: In function `main':
+llvm-link:(.text+0x15a): undefined reference to `libcall'
+llvm-link:(.text+0x179): undefined reference to `libcall'
+llvm-link:(.text+0x1a5): undefined reference to `internal_api'
+llvm-link:(.text+0x1cd): undefined reference to `internal_api'
+llvm-link:(.text+0x1f4): undefined reference to `internal_api'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+EXECUTED: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -o main WHICH RETURNED 1
+
+ERROR: /usr/lib/llvm-10/bin/clang++ /home/benchmarks/examples/modules/slash/main.o.a.i.p.i.h.x.bc -o main
+returned 1

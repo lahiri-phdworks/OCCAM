@@ -1,0 +1,9 @@
+{
+    "benchmarks": [
+        {
+            "dirname" : "examples/modules", 
+            "execname": "main",
+	        "enabled" : "true"
+        }
+    ]
+}
