@@ -11,7 +11,7 @@ FROM buildpack-deps:$UBUNTU
 
 ARG BUILD_TYPE
 RUN echo "Build type set to: $BUILD_TYPE" && \
-     # Install deps.
+    # Install deps.
     apt-get update && \
     apt-get install -yqq software-properties-common && \
     apt-get update && \
@@ -34,16 +34,16 @@ RUN apt-get -y install golang-go && \
 # Install llvm10 from llvm repo since bionic comes with much older version
 WORKDIR /tmp
 RUN wget https://apt.llvm.org/llvm.sh && \
-  chmod +x llvm.sh && \
-  ./llvm.sh 10
+    chmod +x llvm.sh && \
+    ./llvm.sh 10
 
 ENV LLVM_HOME "/usr/lib/llvm-10"
 ENV PATH "$LLVM_HOME/bin:/bin:/usr/bin:/usr/local/bin:/occam/utils/FileCheck_trusty:$GOPATH/bin:$PATH"
 
 RUN rm -rf /occam
-RUN mkdir /occam
+RUN mkdir occam
 COPY ./ /occam
-    
+
 WORKDIR /occam
 ENV CC clang
 ENV CXX clang++
@@ -55,3 +55,20 @@ ENV OCCAM_HOME "/occam"
 RUN make
 RUN make install
 RUN make test
+
+RUN mkdir /metrics
+
+RUN apt-get install -y python3-dev libffi-dev build-essential virtualenvwrapper default-jre default-jdk
+RUN pip install capstone ropgadget
+
+RUN javac --help
+WORKDIR /
+RUN git clone https://github.com/lahiri-phdworks/gality.git gality
+WORKDIR /gality
+RUN javac -d ./bin/ ./src/gality/Program.java
+
+WORKDIR /
+RUN git clone https://github.com/lahiri-phdworks/GadgetSetAnalyzer.git GadgetSetAnalyzer
+RUN git clone https://github.com/lahiri-phdworks/ROPgadget.git ROPgadget
+
+WORKDIR /occam
