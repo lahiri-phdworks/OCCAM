@@ -1,7 +1,0 @@
-{ "main" : "example.o.bc"
-, "binary"  : "example"
-, "modules"    : ["example.so.bc"]
-, "native_libs" : []
-, "static_args"    : ["sumit", "lahiri"]
-, "name"    : "example"
-}

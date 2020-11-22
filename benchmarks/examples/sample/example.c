@@ -4,13 +4,13 @@
 int main(int argc, char *argv[]) {
   int retval = 0;
 
-  if (argc != 2) {
-    return -1;
+  if (argc > 3) {
+    retval = -2;
   } else {
-    return -1;
+    retval = -5;
   }
 
   fprintf(stderr, "main returning %d\n", retval);
 
-  return retval;
+  return 0;
 }

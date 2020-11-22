@@ -15,7 +15,7 @@ fi
 cat > example.manifest <<EOF
 { "main" : "example.o.bc"
 , "binary"  : "example"
-, "modules"    : ["${LIBRARY}.bc"]
+, "modules"    : []
 , "native_libs" : []
 , "static_args"    : ["sumit", "lahiri"]
 , "name"    : "example"
