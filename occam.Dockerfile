@@ -43,42 +43,30 @@ ENV PATH "$LLVM_HOME/bin:/bin:/usr/bin:/usr/local/bin:/occam/utils/FileCheck_tru
 WORKDIR /
 RUN apt-get install -y python3 python3-pip python3-dev libfreetype* libmysqlclient-dev
 RUN pip3 install grpcio-tools numpy pandas keras bokeh umap networkx labm8 sklearn jinja2 absl-py tensorflow-gpu tensorflow torch torchvision ast2json uuid alive-progress gym wget werkzeug
-RUN git clone https://github.com/lahiri-phdworks/ncc.git ncc
+RUN apt-get install -y python3-dev libffi-dev build-essential virtualenvwrapper default-jre default-jdk
+RUN pip install capstone ropgadget wllvm
+
+RUN cd / && git clone https://github.com/lahiri-phdworks/ncc.git
 
 RUN rm -rf /occam
-RUN mkdir occam
-COPY ./ /occam
-
 WORKDIR /occam
+COPY . .
+
 ENV CC clang
 ENV CXX clang++
 ENV LLVM_COMPILER clang
 ENV WLLVM_OUTPUT WARNING
-ENV OCCAM_HOME "/occam"
+ENV OCCAM_HOME /occam
 
-# Build configuration.
-RUN echo "## Clone" >> Instrcutions.md
 RUN make
 RUN make install
 RUN make test
 
-WORKDIR /
-RUN mkdir /metrics
+RUN cd / && git clone https://github.com/michaelbrownuc/gality.git
+RUN cd /gality && javac -d ./bin/ ./src/gality/Program.java
 
-RUN apt-get install -y python3-dev libffi-dev build-essential virtualenvwrapper default-jre default-jdk
-RUN pip install capstone ropgadget wllvm
-
-RUN javac --help
-WORKDIR /
-RUN git clone https://github.com/michaelbrownuc/gality.git gality
-WORKDIR /gality
-RUN javac -d ./bin/ ./src/gality/Program.java
-
-WORKDIR /
-RUN git clone https://github.com/lahiri-phdworks/GadgetSetAnalyzer.git GadgetSetAnalyzer
-RUN git clone https://github.com/lahiri-phdworks/ROPgadget.git ROPgadget
-
-WORKDIR /
+RUN cd / && git clone https://github.com/lahiri-phdworks/GadgetSetAnalyzer.git
+RUN cd / && git clone https://github.com/lahiri-phdworks/ROPgadget.git
 
 FROM debian:buster
 
@@ -97,6 +85,7 @@ RUN mkdir -p chisel/build && cd chisel/build && CXX=clang cmake .. && make
 
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/chisel/build/bin
 ENV CC clang
+ENV CHISEL_HOME /chisel
 ENV CHISEL_BENCHMARK_HOME /chiselbench
 
 WORKDIR /occam
