@@ -12,3 +12,5 @@ examples/linux/*
 examples/spec/*
 
 src/analysis/sea-dsa
+
+razor/pytorch-RLmodel/GadgetSetAnalyzer
