@@ -258,17 +258,15 @@ public:
   MemoryMLFeaturesPassImpl(const DataLayout &dl,
                            TargetLibraryInfoWrapperPass &tliWrapper,
                            LLVMContext &ctx, const AllocWrapInfo &allocInfo,
-			   const DsaLibFuncInfo &dsaLibFuncInfo,
-                           CallGraph &cg)
+                           const DsaLibFuncInfo &dsaLibFuncInfo, CallGraph &cg)
       : m_dl(dl), m_tliWrapper(tliWrapper), m_tli(nullptr), m_ctx(ctx),
-        m_allocInfo(allocInfo), m_dsaLibFuncInfo(dsaLibFuncInfo),
-	m_cg(cg), m_bu_graphs(nullptr) {}
+        m_allocInfo(allocInfo), m_dsaLibFuncInfo(dsaLibFuncInfo), m_cg(cg),
+        m_bu_graphs(nullptr) {}
 
   /* Compute summary graphs for each function */
   void computeSummaryGraphs(Module &M) {
-    m_bu_graphs.reset(new BottomUpGlobalAnalysis(m_dl, m_tliWrapper,
-                                                 m_allocInfo, m_dsaLibFuncInfo,
-						 m_cg, m_sf));
+    m_bu_graphs.reset(new BottomUpGlobalAnalysis(
+        m_dl, m_tliWrapper, m_allocInfo, m_dsaLibFuncInfo, m_cg, m_sf));
     m_bu_graphs->runOnModule(M);
   }
 
@@ -403,13 +401,13 @@ public:
 };
 
 MemoryMLFeaturesPass::MemoryMLFeaturesPass()
-  : ModulePass(ID), m_impl(nullptr) {}
+    : ModulePass(ID), m_impl(nullptr) {}
 
 bool MemoryMLFeaturesPass::runOnModule(Module &M) {
   auto &dl = M.getDataLayout();
   auto &tliWrapper = getAnalysis<TargetLibraryInfoWrapperPass>();
   auto &allocInfo = getAnalysis<AllocWrapInfo>();
-  auto &dsaLibFuncInfo = getAnalysis<DsaLibFuncInfo>();  
+  auto &dsaLibFuncInfo = getAnalysis<DsaLibFuncInfo>();
   CallGraph *cg = nullptr;
   // if (UseDsaCallGraph) {
   // cg = &getAnalysis<CompleteCallGraph>().getCompleteCallGraph();
@@ -419,7 +417,7 @@ bool MemoryMLFeaturesPass::runOnModule(Module &M) {
 
   allocInfo.initialize(M, this);
   dsaLibFuncInfo.initialize(M);
-    
+
   m_impl.reset(new MemoryMLFeaturesPassImpl(dl, tliWrapper, M.getContext(),
                                             allocInfo, dsaLibFuncInfo, *cg));
   m_impl->computeSummaryGraphs(M);
@@ -458,7 +456,7 @@ void MemoryMLFeaturesPass::getAnalysisUsage(AnalysisUsage &AU) const {
 }
 
 char MemoryMLFeaturesPass::ID;
-} // end namespace
+} // namespace previrt
 
 static llvm::RegisterPass<previrt::MemoryMLFeaturesPass>
     X("Pmem-ml-features", "Extract memory-related ML features", false, false);
