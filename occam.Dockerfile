@@ -1,4 +1,4 @@
-# Dockerfile for OCCAM binary
+# Dockerfile for OCCAM Combined binary
 # produces package in /occam/build
 # Arguments:
 #  - UBUNTU:     bionic
