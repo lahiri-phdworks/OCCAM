@@ -1,8 +1,0 @@
-{ "main" : "main.bc"
-, "binary"  : "main"
-, "modules"    : ["library.so.bc"]
-, "native_libs" : []
-, "name"    : "main"
-, "static_args"    : ["8181"]
-, "dynamic_args"   : "0"
-}

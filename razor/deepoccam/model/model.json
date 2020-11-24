@@ -1,0 +1,121 @@
+{
+    "protoVersion": "3",
+    "mainModule": {
+        "submodules": [
+            {
+                "parameters": [
+                    {
+                        "isBuffer": false,
+                        "tensorId": "1",
+                        "name": "weight"
+                    },
+                    {
+                        "isBuffer": false,
+                        "tensorId": "2",
+                        "name": "bias"
+                    }
+                ],
+                "name": "fc1",
+                "optimize": true
+            },
+            {
+                "parameters": [
+                    {
+                        "isBuffer": false,
+                        "tensorId": "3",
+                        "name": "weight"
+                    },
+                    {
+                        "isBuffer": false,
+                        "tensorId": "4",
+                        "name": "bias"
+                    }
+                ],
+                "name": "fc2",
+                "optimize": true
+            }
+        ],
+        "torchscriptArena": {
+            "key": "code/model.py"
+        },
+        "name": "model",
+        "optimize": true
+    },
+    "producerName": "pytorch",
+    "producerVersion": "1.0",
+    "tensors": [
+        {
+            "offset": "0",
+            "requiresGrad": false,
+            "dataType": "INT64",
+            "data": {
+                "key": "tensors/0"
+            },
+            "device": "cpu"
+        },
+        {
+            "dims": [
+                "3",
+                "3"
+            ],
+            "offset": "0",
+            "strides": [
+                "3",
+                "1"
+            ],
+            "requiresGrad": true,
+            "dataType": "FLOAT",
+            "data": {
+                "key": "tensors/1"
+            },
+            "device": "cpu"
+        },
+        {
+            "dims": [
+                "3"
+            ],
+            "offset": "0",
+            "strides": [
+                "1"
+            ],
+            "requiresGrad": true,
+            "dataType": "FLOAT",
+            "data": {
+                "key": "tensors/2"
+            },
+            "device": "cpu"
+        },
+        {
+            "dims": [
+                "2",
+                "3"
+            ],
+            "offset": "0",
+            "strides": [
+                "3",
+                "1"
+            ],
+            "requiresGrad": true,
+            "dataType": "FLOAT",
+            "data": {
+                "key": "tensors/3"
+            },
+            "device": "cpu"
+        },
+        {
+            "dims": [
+                "2"
+            ],
+            "offset": "0",
+            "strides": [
+                "1"
+            ],
+            "requiresGrad": true,
+            "dataType": "FLOAT",
+            "data": {
+                "key": "tensors/4"
+            },
+            "device": "cpu"
+        }
+    ]
+}
