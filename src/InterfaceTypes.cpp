@@ -296,7 +296,7 @@ TypeRefinementKind InterfaceType::refines(const llvm::Value *const val) const {
 #define CASE(x)                                                                \
   case proto::x: {                                                             \
     if (&va->getValueAPF().getSemantics() != &APFloat::x())                    \
-      return TypeRefinementKind::NO_MATCH;				\
+      return TypeRefinementKind::NO_MATCH;                                     \
     sem = &APFloat::x();                                                       \
     break;                                                                     \
   }
@@ -570,4 +570,4 @@ void codeInto<InterfaceType, proto::PrevirtType>(const InterfaceType &typ,
   assert(typ.buffer.IsInitialized());
   buf.CopyFrom(typ.buffer);
 }
-}
+} // namespace previrt
