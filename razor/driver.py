@@ -49,6 +49,7 @@ opt_stats = False
 # set by slash.driver_config
 work_dir = '/tmp'
 
+
 class ReturnCode(Exception):
     def __init__(self, value, cmd, proc):
         Exception.__init__(self)
@@ -58,6 +59,7 @@ class ReturnCode(Exception):
 
     def __str__(self):
         return "{0}\nreturned {1}".format(' '.join(self._cmd), self._value)
+
 
 def all_args(opt, args):
     result = []
@@ -73,6 +75,7 @@ def previrt(fin, fout, args, **opts):
     args = opt_debug_cmds + libs + [fin, '-o={0}'.format(fout)] + args
 
     return run(config.get_llvm_tool('opt'), args, **opts)
+
 
 def previrt_progress(fin, fout, args, output=None):
     libs = ['-load={0}'.format(config.get_sea_dsalib()),
@@ -108,9 +111,9 @@ def previrt_progress(fin, fout, args, output=None):
     progress = str(sb)
 
     logging.getLogger().info('%(cmd)s => %(code)d\n',
-                             {'cmd'  : ' '.join(args),
-                              'code' : retcode,
-                              'progress' : progress})
+                             {'cmd': ' '.join(args),
+                              'code': retcode,
+                              'progress': progress})
     if output != None:
         output[0] = progress
     return '...progress...' in progress
@@ -121,15 +124,15 @@ def linker(fin, fout, args):
     return run('clang++', args)
 
 
-
-
 opt_call_count = 0
+
 
 def opt_stats_output(prog, args):
     global opt_call_count
     optpath = os.path.join(work_dir, 'opt_call_{0}.txt'.format(opt_call_count))
     optfp = open(optpath, 'a+')
-    optfp.write('\nopt call {0}:\n\t{1}\n'.format(opt_call_count, ' '.join(args)))
+    optfp.write('\nopt call {0}:\n\t{1}\n'.format(
+        opt_call_count, ' '.join(args)))
     opt_call_count += 1
     if '-stats' not in args:
         nargs = ['-stats']
@@ -169,7 +172,7 @@ def run(prog, args, sb=None, fail_on_error=True):
         outfp.close()
 
     log.log(logging.INFO, 'EXECUTED: %(cmd)s WHICH RETURNED %(code)d\n',
-            {'cmd'  : ' '.join([prog] + args), 'code' : retcode })
+            {'cmd': ' '.join([prog] + args), 'code': retcode})
 
     if fail_on_error and retcode != 0:
         ex = ReturnCode(retcode, [prog] + args, proc)
@@ -179,4 +182,5 @@ def run(prog, args, sb=None, fail_on_error=True):
 
 
 def report(prog, args):
-    if verbose: print 'Calling:\n\t{0}\n'.format(prog + ' ' + ' '.join(args))
+    if verbose:
+        print 'Calling:\n\t{0}\n'.format(prog + ' ' + ' '.join(args))
