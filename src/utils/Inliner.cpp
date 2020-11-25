@@ -48,5 +48,5 @@ bool inlineOnly(Module &M, const SmallPtrSet<Function *, 8> &inline_functions) {
 
   return change;
 }
-}
-}
+} // namespace utils
+} // namespace previrt

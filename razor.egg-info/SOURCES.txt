@@ -21,9 +21,3 @@ razor.egg-info/requires.txt
 razor.egg-info/top_level.txt
 razor/proto/Previrt_pb2.py
 razor/proto/__init__.py
-razor/pytorch-RLmodel/__init__.py
-razor/pytorch-RLmodel/read_grpcdata.py
-razor/pytorch-RLmodel/HF-modelling/__init__.py
-razor/pytorch-RLmodel/inst2vec-modelling/__init__.py
-razor/pytorch-RLmodel/proto/Previrt_pb2.py
-razor/pytorch-RLmodel/proto/__init__.py

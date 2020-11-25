@@ -70,4 +70,4 @@ public:
                                  llvm::SmallBitVector &marks) override;
 };
 
-} // end namespace
+} // namespace previrt

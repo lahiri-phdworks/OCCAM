@@ -51,7 +51,7 @@ namespace llvm {
 class Value;
 class Function;
 class Module;
-}
+} // namespace llvm
 
 namespace previrt {
 class SpecializationTable {
@@ -94,4 +94,4 @@ public:
 
   const llvm::Function *getPrincipalFunction(const llvm::Function *) const;
 };
-}
+} // namespace previrt

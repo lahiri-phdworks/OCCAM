@@ -93,4 +93,4 @@ public:
                                  const ComponentInterface &interface,
                                  llvm::SmallBitVector &marks) = 0;
 };
-} // end namespace
+} // namespace previrt
