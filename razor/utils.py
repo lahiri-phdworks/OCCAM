@@ -40,9 +40,10 @@ import logging
 from . import provenance
 from . import config
 
+
 def checkOccamLib():
     occamlib = config.get_occamlib_path()
-    if occamlib is None  or not os.path.exists(occamlib):
+    if occamlib is None or not os.path.exists(occamlib):
         sys.stderr.write('The occam library was not found. RTFM.\n')
         return False
     return True
@@ -53,6 +54,7 @@ def get_flag(flags, flag, default=None):
         if x == '--{0}'.format(flag):
             return y
     return default
+
 
 def get_work_dir(flags):
     d = get_flag(flags, 'work-dir')
@@ -66,6 +68,7 @@ def get_whitelist(flags):
     if wl is not None:
         return os.path.abspath(wl)
     return None
+
 
 def get_amalgamation(flags):
     amalg = get_flag(flags, 'amalgamate')
@@ -82,13 +85,16 @@ def get_manifest(args):
     try:
         manifest_file = args[0]
         if not os.path.exists(manifest_file):
-            sys.stderr.write('\nManifest file {0} not found\n\n'.format(manifest_file))
-        elif  not os.path.isfile(manifest_file):
-            sys.stderr.write('\nManifest file {0} not a file\n\n'.format(manifest_file))
+            sys.stderr.write(
+                '\nManifest file {0} not found\n\n'.format(manifest_file))
+        elif not os.path.isfile(manifest_file):
+            sys.stderr.write(
+                '\nManifest file {0} not a file\n\n'.format(manifest_file))
         else:
             manifest = json.load(open(manifest_file, 'r'))
     except Exception:
-        sys.stderr.write('\nReading and parsing the manifest file {0} failed\n\n'.format(args[0]))
+        sys.stderr.write(
+            '\nReading and parsing the manifest file {0} failed\n\n'.format(args[0]))
     return manifest
 
 
@@ -97,7 +103,8 @@ def make_work_dir(d):
         sys.stderr.write('making working directory... "{0}"\n'.format(d))
         os.mkdir(d)
     if not os.path.isdir(d):
-        sys.stderr.write('working directory  "{0}" is not a directory\n'.format(d))
+        sys.stderr.write(
+            'working directory  "{0}" is not a directory\n'.format(d))
         return False
     return True
 
@@ -105,11 +112,12 @@ def make_work_dir(d):
 def sanity_check_manifest(manifest):
     """ Nurse maid the users.
     """
-    manifest_keys = ['ldflags', 'static_args', 'name', 'native_libs', 'binary', 'modules']
+    manifest_keys = ['ldflags', 'args', 'name',
+                     'native_libs', 'binary', 'modules']
 
     old_manifest_keys = ['modules', 'libs', 'search', 'shared']
 
-    new_manifest_keys = ['main', 'binary', 'dynamic_args', 'lib_spec', 'main_spec']
+    new_manifest_keys = ['main', 'binary', 'constraints']
 
     dodo_manifest_keys = ['watch']
 
@@ -129,7 +137,8 @@ def sanity_check_manifest(manifest):
         return False
 
     if not isinstance(manifest, dict):
-        sys.stderr.write('\nManifest is not a dictionary: {0}.\n'.format(type(manifest)))
+        sys.stderr.write(
+            '\nManifest is not a dictionary: {0}.\n'.format(type(manifest)))
         return False
 
     for key in manifest:
@@ -138,34 +147,25 @@ def sanity_check_manifest(manifest):
 
         if key in dodo_manifest_keys:
             cr(warnings)
-            sys.stderr.write('Warning: "{0}" is no longer supported; ignoring.\n'.format(key))
+            sys.stderr.write(
+                'Warning: "{0}" is no longer supported; ignoring.\n'.format(key))
             continue
-
 
         if key in old_manifest_keys:
             cr(warnings)
-            sys.stderr.write('Warning: old style key "{0}" is DEPRECATED, use {1}.\n'.format(key, replaces[key]), )
+            sys.stderr.write('Warning: old style key "{0}" is DEPRECATED, use {1}.\n'.format(
+                key, replaces[key]), )
             continue
 
         if not key in new_manifest_keys:
             cr(warnings)
-            sys.stderr.write('Warning: "{0}" is not a recognized key; ignoring.\n'.format(key))
+            sys.stderr.write(
+                'Warning: "{0}" is not a recognized key; ignoring.\n'.format(key))
             continue
 
     return True
 
-def get_int(n):
-    if n is None:
-        return 0
-    elif isinstance(n, int) or isinstance(n, unicode):
-        return n
-    elif isinstance(n, str):
-        try:
-            return int(n)
-        except ValueError:
-            pass
-    return None
-    
+
 def check_manifest(manifest):
 
     ok = sanity_check_manifest(manifest)
@@ -196,33 +196,23 @@ def check_manifest(manifest):
     if ldflags is None:
         ldflags = []
 
-    static_args = manifest.get('static_args')
+    args = manifest.get('args')
 
-    dynamic_args = manifest.get('dynamic_args')
-    dynamic_args = get_int(dynamic_args)
-    if dynamic_args is None:
-        sys.stderr.write('Field dynamic_args in manifest must be a int or string representing a int\n')
-        return (False, )
-    
+    constraints = manifest.get('constraints')
+    if constraints is None:
+        constraints = ('-1', [])
+    else:
+        constraints = (constraints[0], constraints[1:])
+
     name = manifest.get('name')
     if name is None:
         sys.stderr.write('No name in manifest\n')
         return (False, )
 
-    lib_spec = manifest.get('lib_spec')
-    if lib_spec is None:
-        lib_spec = []
-
-    main_spec = manifest.get('main_spec')
-    if main_spec is None:
-        main_spec = []
-
-    return (True, main, binary, modules, native_libs, ldflags, static_args, name, dynamic_args, \
-            lib_spec, main_spec)
-            
+    return (True, main, binary, modules, native_libs, ldflags, args, name, constraints)
 
 
-#iam: used to be just os.path.basename; but now when we are processing trees
+# iam: used to be just os.path.basename; but now when we are processing trees
 # the leaf names are not necessarily unique.
 def prevent_collisions(x):
     folders = []
@@ -239,13 +229,14 @@ def prevent_collisions(x):
     folders.reverse()
     return "_".join(folders)
 
+
 bit_code_pattern = re.compile(r'\.bc$', re.IGNORECASE)
 
 
-def populate_work_dir(module, libs, lib_spec, main_spec, work_dir):
+def populate_work_dir(module, libs, work_dir):
     files = {}
 
-    for x in [module] + libs + lib_spec + main_spec :
+    for x in [module] + libs:
         if bit_code_pattern.search(x):
             bn = prevent_collisions(x)
             target = os.path.join(work_dir, bn)
@@ -255,7 +246,6 @@ def populate_work_dir(module, libs, lib_spec, main_spec, work_dir):
             files[x] = provenance.FileStream(target[:idx], 'bc')
         else:
             sys.stderr.write('Ignoring {0}\n'.format(x))
-
 
     return files
 
@@ -267,6 +257,7 @@ def makeLogfile(logfile):
         if not os.path.exists(path):
             os.mkdir(path)
 
+
 def setLogger():
     logfile = config.get_logfile()
     logger = logging.getLogger()
@@ -277,11 +268,11 @@ def setLogger():
     hdlr.setFormatter(logging.Formatter("%(message)s"))
     logger.addHandler(hdlr)
 
-    levels = {'CRITICAL' : logging.CRITICAL,
-              'ERROR'    : logging.ERROR,
-              'WARNING'  : logging.WARNING,
-              'INFO'     : logging.INFO,
-              'DEBUG'    : logging.DEBUG}
+    levels = {'CRITICAL': logging.CRITICAL,
+              'ERROR': logging.ERROR,
+              'WARNING': logging.WARNING,
+              'INFO': logging.INFO,
+              'DEBUG': logging.DEBUG}
 
     level = os.getenv('OCCAM_LOGLEVEL', None)
     if level is not None:
@@ -291,27 +282,35 @@ def setLogger():
     logger.setLevel(level)
     logger.info(">> %s\n", ' '.join(sys.argv))
 
+
 def write_timestamp(msg):
     import datetime
-    dt = datetime.datetime.now ().strftime ('%d/%m/%Y %H:%M:%S')
+    dt = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
     sys.stderr.write("[%s] %s...\n" % (dt, msg))
 
-def is_exec (fpath):
-    if fpath == None: return False
+
+def is_exec(fpath):
+    if fpath == None:
+        return False
     return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
 
 def which(program):
     fpath, _ = os.path.split(program)
     if fpath:
-        if is_exec (program): return program
+        if is_exec(program):
+            return program
     else:
         for path in os.environ["PATH"].split(os.pathsep):
             exe_file = os.path.join(path, program)
-            if is_exec (exe_file): return exe_file
+            if is_exec(exe_file):
+                return exe_file
     return None
 
 # seaopt is a customized version of LLVM opt that is more
 # friendly to tools like crab and seahorn.
+
+
 def found_seaopt():
     opt = which('seaopt')
     if opt is not None:
@@ -319,34 +318,48 @@ def found_seaopt():
     else:
         return False
 
-def get_opt(use_seaopt = False):
+
+def get_opt(use_seaopt=False):
     opt = None
     if use_seaopt:
         opt = which('seaopt')
     if opt is None:
-        opt = config.get_llvm_tool('opt')
+        opt = which('opt')
     if opt is None:
         raise IOError('opt was not found')
     return opt
 
 # Try to find ROPgadget binary
+
+
 def get_ropgadget():
     ropgadget = None
-    if 'ROPGADGET' in os.environ: ropgadget = os.environ ['ROPGADGET']
-    if not is_exec(ropgadget): ropgadget = which('ropgadget')
-    if not is_exec(ropgadget): ropgadget = which('ROPgadget.py')
+    if 'ROPGADGET' in os.environ:
+        ropgadget = os.environ['ROPGADGET']
+    if not is_exec(ropgadget):
+        ropgadget = which('ropgadget')
+    if not is_exec(ropgadget):
+        ropgadget = which('ROPgadget.py')
     return ropgadget
 
 # Try to find seahorn binary
+
+
 def get_seahorn():
     seahorn = None
-    if 'SEAHORN' in os.environ: seahorn = os.environ ['SEAHORN']
-    if not is_exec(seahorn): seahorn = which('sea')
+    if 'SEAHORN' in os.environ:
+        seahorn = os.environ['SEAHORN']
+    if not is_exec(seahorn):
+        seahorn = which('sea')
     return seahorn
 
-# Try to find clam binary
-def get_clam():
-    clam = None
-    if 'CLAM' in os.environ: clam = os.environ ['CLAM']
-    if not is_exec(clam): clam = which('clam')
-    return clam
+# Try to find crabllvm binary
+
+
+def get_crabllvm():
+    crabllvm = None
+    if 'CRABLLVM' in os.environ:
+        crabllvm = os.environ['CRABLLVM']
+    if not is_exec(crabllvm):
+        crabllvm = which('crabllvm')
+    return crabllvm

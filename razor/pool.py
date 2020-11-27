@@ -34,20 +34,23 @@
  Thread pool for processing modules in parallel.
 
 """
-from Queue import Queue
+from queue import Queue
 import threading
 import traceback
 import sys
 
+
 class Worker(threading.Thread):
     """ A daemon worker thread.
     """
+
     def __init__(self, q):
         """ Initializes a thread in the queue q.
         """
         threading.Thread.__init__(self)
         self.daemon = True
         self.queue = q
+
     def run(self):
         """ The thread main.
         """
@@ -59,6 +62,7 @@ class Worker(threading.Thread):
 class ThreadPool(object):
     """ A pool of daemon worker threads.
     """
+
     def __init__(self, count=3):
         """ Initializes a pool queue.
         """
@@ -76,17 +80,21 @@ class ThreadPool(object):
         self._start()
         result = [None for i in range(0, len(args))]
         sem = threading.Semaphore(0)
+
         def func(i):
             def rf():
                 try:
-                    result[i] = f(args[i])
+                    print(f)
+                    print(args)
+                    # result[i] = f[args[i]]
                 except Exception:
                     seperator = '-' * 60
-                    print("Exception in worker for {0}:".format(f.func_doc))
+                    print("Exception in worker for {0}:".format(f.__doc__))
                     print(seperator)
                     traceback.print_exc(file=sys.stderr)
                     print(seperator)
-                    sys.exit(1)  #iam: was _exit; but are we really that low level?
+                    # iam: was _exit; but are we really that low level?
+                    sys.exit(1)
                 finally:
                     sem.release()
             return rf
@@ -99,15 +107,18 @@ class ThreadPool(object):
     def shutdown(self):
         pass
 
+
 POOL = ThreadPool(3)
+
 
 def getDefaultPool():
     return POOL
 
+
 def InParallel(f, args, pool=None):
     import datetime
-    dt = datetime.datetime.now ().strftime ('%d/%m/%Y %H:%M:%S')
-    sys.stderr.write("[%s] Starting %s...\n" % (dt, f.func_doc))
+    dt = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    sys.stderr.write("[%s] Starting %s...\n" % (dt, f.__doc__))
     if pool is None:
         pool = getDefaultPool()
     result = pool.map(f, args)

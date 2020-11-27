@@ -28,11 +28,11 @@ else
 # LINUX
 LIBRARY = ${LIBRARYNAME}.so
 LIBFLAGS = -shared -Wl,-soname,${LIBRARY} 
-OTHERLIBS =  -L/usr/local/lib -lpthread -lprotobuf # -lgrpc++
+OTHERLIBS =  -L/usr/local/lib -lpthread -lprotobuf
 CXX_FLAGS += -DHAVE_FFI_H
 endif
 
-PROTOC = $(shell which protoc)
+PROTOC  = /usr/local/bin/protoc # $(shell which protoc)
 
 SOURCES = $(wildcard *.cpp) 
 
@@ -84,11 +84,9 @@ utils/%.o: utils/%.cpp
 
 proto/%.o: proto/%.cc proto/%.h 
 	$(CXX)  ${CXX_FLAGS} $< -c -o $@
-	$(CXX)  ${CXX_FLAGS} proto/Previrt.grpc.pb.cc -c -o proto/Previrt.grpc.pb.o
 
 protoc: Previrt.proto
 	mkdir -p proto
-	${PROTOC} --grpc_out=proto --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` Previrt.proto 
 	${PROTOC} Previrt.proto --cpp_out=proto
 
 clean: 

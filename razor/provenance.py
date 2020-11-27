@@ -31,19 +31,23 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
+
 class VersionedFile(object):
     def __init__(self, base, suffix, digits=2):
         self._base = base
         self._suffix = suffix
         self._version = 0
         self._format = "%s.%%0%dd.%s" % (base, digits, suffix)
+
     def new(self):
         self._version += 1
         return self.get()
+
     def get(self):
         if self._version == 0:
             return "%s.%s" % (self._base, self._suffix)
         return self._format % self._version
+
 
 class FileStream(object):
     def __init__(self, base, suffix):

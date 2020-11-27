@@ -14,9 +14,9 @@ This Makefile requires GNU Make.
 endif
 
 # tools that are used
-PROTOC  = $(shell which protoc)
+PROTOC  = /usr/local/bin/protoc # $(shell which protoc)
 PYLINT  = $(shell which pylint)
-PIP     = $(shell which pip)
+PIP     = $(shell which pip3)
 MKDIR_P = mkdir -p
 RM_F    = rm -f
 

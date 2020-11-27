@@ -14,6 +14,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+
+PROTOBUF_PRAGMA_INIT_SEG
 extern PROTOBUF_INTERNAL_EXPORT_Previrt_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ActionTree_Previrt_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_Previrt_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ActionTree_Forward_Previrt_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_Previrt_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CallInfo_Previrt_2eproto;
@@ -118,9 +120,6 @@ static void InitDefaultsscc_info_ActionTree_Previrt_2eproto() {
     new (ptr) ::previrt::proto::ActionTree();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::ActionTree_Case::InitAsDefaultInstance();
-  ::previrt::proto::ActionTree_Event::InitAsDefaultInstance();
-  ::previrt::proto::ActionTree::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ActionTree_Previrt_2eproto =
@@ -136,7 +135,6 @@ static void InitDefaultsscc_info_ActionTree_Forward_Previrt_2eproto() {
     new (ptr) ::previrt::proto::ActionTree_Forward();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::ActionTree_Forward::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ActionTree_Forward_Previrt_2eproto =
@@ -150,7 +148,6 @@ static void InitDefaultsscc_info_CallInfo_Previrt_2eproto() {
     new (ptr) ::previrt::proto::CallInfo();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::CallInfo::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CallInfo_Previrt_2eproto =
@@ -165,7 +162,6 @@ static void InitDefaultsscc_info_CallRewrite_Previrt_2eproto() {
     new (ptr) ::previrt::proto::CallRewrite();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::CallRewrite::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CallRewrite_Previrt_2eproto =
@@ -180,7 +176,6 @@ static void InitDefaultsscc_info_ComponentInterface_Previrt_2eproto() {
     new (ptr) ::previrt::proto::ComponentInterface();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::ComponentInterface::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ComponentInterface_Previrt_2eproto =
@@ -196,7 +191,6 @@ static void InitDefaultsscc_info_ComponentInterfaceTransform_Previrt_2eproto() {
     new (ptr) ::previrt::proto::ComponentInterfaceTransform();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::ComponentInterfaceTransform::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ComponentInterfaceTransform_Previrt_2eproto =
@@ -211,7 +205,6 @@ static void InitDefaultsscc_info_EnforceInterface_Previrt_2eproto() {
     new (ptr) ::previrt::proto::EnforceInterface();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::EnforceInterface::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_EnforceInterface_Previrt_2eproto =
@@ -226,7 +219,6 @@ static void InitDefaultsscc_info_EnforceInterface_Functions_Previrt_2eproto() {
     new (ptr) ::previrt::proto::EnforceInterface_Functions();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::EnforceInterface_Functions::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_EnforceInterface_Functions_Previrt_2eproto =
@@ -241,7 +233,6 @@ static void InitDefaultsscc_info_Prediction_Previrt_2eproto() {
     new (ptr) ::previrt::proto::Prediction();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::Prediction::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Prediction_Previrt_2eproto =
@@ -260,8 +251,6 @@ static void InitDefaultsscc_info_PrevirtType_Previrt_2eproto() {
     new (ptr) ::previrt::proto::PrevirtType();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::PrevirtType_Vec::InitAsDefaultInstance();
-  ::previrt::proto::PrevirtType::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_PrevirtType_Previrt_2eproto =
@@ -279,7 +268,6 @@ static void InitDefaultsscc_info_PrevirtType_Float_Previrt_2eproto() {
     new (ptr) ::previrt::proto::PrevirtType_Float();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::PrevirtType_Float::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PrevirtType_Float_Previrt_2eproto =
@@ -293,7 +281,6 @@ static void InitDefaultsscc_info_PrevirtType_Global_Previrt_2eproto() {
     new (ptr) ::previrt::proto::PrevirtType_Global();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::PrevirtType_Global::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PrevirtType_Global_Previrt_2eproto =
@@ -307,7 +294,6 @@ static void InitDefaultsscc_info_PrevirtType_Int_Previrt_2eproto() {
     new (ptr) ::previrt::proto::PrevirtType_Int();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::PrevirtType_Int::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PrevirtType_Int_Previrt_2eproto =
@@ -321,7 +307,6 @@ static void InitDefaultsscc_info_PrevirtType_Str_Previrt_2eproto() {
     new (ptr) ::previrt::proto::PrevirtType_Str();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::PrevirtType_Str::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PrevirtType_Str_Previrt_2eproto =
@@ -335,7 +320,6 @@ static void InitDefaultsscc_info_State_Previrt_2eproto() {
     new (ptr) ::previrt::proto::State();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::previrt::proto::State::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_State_Previrt_2eproto =
@@ -660,7 +644,7 @@ const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Previr
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_Previrt_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_Previrt_2eproto)), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_Previrt_2eproto(&descriptor_table_Previrt_2eproto);
 namespace previrt {
 namespace proto {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Type_descriptor() {
@@ -720,8 +704,6 @@ bool ActionType_IsValid(int value) {
 
 // ===================================================================
 
-void PrevirtType_Int::InitAsDefaultInstance() {
-}
 class PrevirtType_Int::_Internal {
  public:
   using HasBits = decltype(std::declval<PrevirtType_Int>()._has_bits_);
@@ -748,7 +730,7 @@ PrevirtType_Int::PrevirtType_Int(const PrevirtType_Int& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_value()) {
-    value_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_value(),
+    value_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_value(), 
       GetArena());
   }
   bits_ = from.bits_;
@@ -805,7 +787,6 @@ void PrevirtType_Int::Clear() {
 const char* PrevirtType_Int::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -983,8 +964,6 @@ void PrevirtType_Int::InternalSwap(PrevirtType_Int* other) {
 
 // ===================================================================
 
-void PrevirtType_Vec::InitAsDefaultInstance() {
-}
 class PrevirtType_Vec::_Internal {
  public:
 };
@@ -1044,7 +1023,6 @@ void PrevirtType_Vec::Clear() {
 
 const char* PrevirtType_Vec::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1187,8 +1165,6 @@ void PrevirtType_Vec::InternalSwap(PrevirtType_Vec* other) {
 
 // ===================================================================
 
-void PrevirtType_Str::InitAsDefaultInstance() {
-}
 class PrevirtType_Str::_Internal {
  public:
   using HasBits = decltype(std::declval<PrevirtType_Str>()._has_bits_);
@@ -1212,7 +1188,7 @@ PrevirtType_Str::PrevirtType_Str(const PrevirtType_Str& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_data()) {
-    data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_data(),
+    data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_data(), 
       GetArena());
   }
   cstr_ = from.cstr_;
@@ -1271,7 +1247,6 @@ void PrevirtType_Str::Clear() {
 const char* PrevirtType_Str::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1442,8 +1417,6 @@ void PrevirtType_Str::InternalSwap(PrevirtType_Str* other) {
 
 // ===================================================================
 
-void PrevirtType_Float::InitAsDefaultInstance() {
-}
 class PrevirtType_Float::_Internal {
  public:
   using HasBits = decltype(std::declval<PrevirtType_Float>()._has_bits_);
@@ -1470,7 +1443,7 @@ PrevirtType_Float::PrevirtType_Float(const PrevirtType_Float& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_data()) {
-    data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_data(),
+    data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_data(), 
       GetArena());
   }
   sem_ = from.sem_;
@@ -1529,7 +1502,6 @@ void PrevirtType_Float::Clear() {
 const char* PrevirtType_Float::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1711,8 +1683,6 @@ void PrevirtType_Float::InternalSwap(PrevirtType_Float* other) {
 
 // ===================================================================
 
-void PrevirtType_Global::InitAsDefaultInstance() {
-}
 class PrevirtType_Global::_Internal {
  public:
   using HasBits = decltype(std::declval<PrevirtType_Global>()._has_bits_);
@@ -1739,7 +1709,7 @@ PrevirtType_Global::PrevirtType_Global(const PrevirtType_Global& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_name()) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
       GetArena());
   }
   is_const_ = from.is_const_;
@@ -1796,7 +1766,6 @@ void PrevirtType_Global::Clear() {
 const char* PrevirtType_Global::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1965,18 +1934,6 @@ void PrevirtType_Global::InternalSwap(PrevirtType_Global* other) {
 
 // ===================================================================
 
-void PrevirtType::InitAsDefaultInstance() {
-  ::previrt::proto::_PrevirtType_default_instance_._instance.get_mutable()->int__ = const_cast< ::previrt::proto::PrevirtType_Int*>(
-      ::previrt::proto::PrevirtType_Int::internal_default_instance());
-  ::previrt::proto::_PrevirtType_default_instance_._instance.get_mutable()->vec_ = const_cast< ::previrt::proto::PrevirtType_Vec*>(
-      ::previrt::proto::PrevirtType_Vec::internal_default_instance());
-  ::previrt::proto::_PrevirtType_default_instance_._instance.get_mutable()->str_ = const_cast< ::previrt::proto::PrevirtType_Str*>(
-      ::previrt::proto::PrevirtType_Str::internal_default_instance());
-  ::previrt::proto::_PrevirtType_default_instance_._instance.get_mutable()->float__ = const_cast< ::previrt::proto::PrevirtType_Float*>(
-      ::previrt::proto::PrevirtType_Float::internal_default_instance());
-  ::previrt::proto::_PrevirtType_default_instance_._instance.get_mutable()->global_ = const_cast< ::previrt::proto::PrevirtType_Global*>(
-      ::previrt::proto::PrevirtType_Global::internal_default_instance());
-}
 class PrevirtType::_Internal {
  public:
   using HasBits = decltype(std::declval<PrevirtType>()._has_bits_);
@@ -2069,8 +2026,9 @@ PrevirtType::PrevirtType(const PrevirtType& from)
 
 void PrevirtType::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PrevirtType_Previrt_2eproto.base);
-  ::memset(&int__, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&int__) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&int__)) + sizeof(type_));
 }
 
@@ -2141,7 +2099,6 @@ void PrevirtType::Clear() {
 const char* PrevirtType::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -2435,8 +2392,6 @@ void PrevirtType::InternalSwap(PrevirtType* other) {
 
 // ===================================================================
 
-void CallInfo::InitAsDefaultInstance() {
-}
 class CallInfo::_Internal {
  public:
   using HasBits = decltype(std::declval<CallInfo>()._has_bits_);
@@ -2465,7 +2420,7 @@ CallInfo::CallInfo(const CallInfo& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_name()) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
       GetArena());
   }
   count_ = from.count_;
@@ -2525,7 +2480,6 @@ void CallInfo::Clear() {
 const char* CallInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -2726,10 +2680,6 @@ void CallInfo::InternalSwap(CallInfo* other) {
 
 // ===================================================================
 
-void CallRewrite::InitAsDefaultInstance() {
-  ::previrt::proto::_CallRewrite_default_instance_._instance.get_mutable()->call_ = const_cast< ::previrt::proto::CallInfo*>(
-      ::previrt::proto::CallInfo::internal_default_instance());
-}
 class CallRewrite::_Internal {
  public:
   using HasBits = decltype(std::declval<CallRewrite>()._has_bits_);
@@ -2763,7 +2713,7 @@ CallRewrite::CallRewrite(const CallRewrite& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   new_function_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_new_function()) {
-    new_function_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_new_function(),
+    new_function_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_new_function(), 
       GetArena());
   }
   if (from._internal_has_call()) {
@@ -2831,7 +2781,6 @@ void CallRewrite::Clear() {
 const char* CallRewrite::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -3061,8 +3010,6 @@ void CallRewrite::InternalSwap(CallRewrite* other) {
 
 // ===================================================================
 
-void ComponentInterface::InitAsDefaultInstance() {
-}
 class ComponentInterface::_Internal {
  public:
 };
@@ -3131,7 +3078,6 @@ void ComponentInterface::Clear() {
 
 const char* ComponentInterface::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -3363,8 +3309,6 @@ void ComponentInterface::InternalSwap(ComponentInterface* other) {
 
 // ===================================================================
 
-void ComponentInterfaceTransform::InitAsDefaultInstance() {
-}
 class ComponentInterfaceTransform::_Internal {
  public:
 };
@@ -3424,7 +3368,6 @@ void ComponentInterfaceTransform::Clear() {
 
 const char* ComponentInterfaceTransform::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -3567,14 +3510,6 @@ void ComponentInterfaceTransform::InternalSwap(ComponentInterfaceTransform* othe
 
 // ===================================================================
 
-void ActionTree_Case::InitAsDefaultInstance() {
-  ::previrt::proto::_ActionTree_Case_default_instance_._instance.get_mutable()->test_ = const_cast< ::previrt::proto::PrevirtType*>(
-      ::previrt::proto::PrevirtType::internal_default_instance());
-  ::previrt::proto::_ActionTree_Case_default_instance_._instance.get_mutable()->_then_ = const_cast< ::previrt::proto::ActionTree*>(
-      ::previrt::proto::ActionTree::internal_default_instance());
-  ::previrt::proto::_ActionTree_Case_default_instance_._instance.get_mutable()->_else_ = const_cast< ::previrt::proto::ActionTree*>(
-      ::previrt::proto::ActionTree::internal_default_instance());
-}
 class ActionTree_Case::_Internal {
  public:
   using HasBits = decltype(std::declval<ActionTree_Case>()._has_bits_);
@@ -3641,8 +3576,9 @@ ActionTree_Case::ActionTree_Case(const ActionTree_Case& from)
 
 void ActionTree_Case::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ActionTree_Previrt_2eproto.base);
-  ::memset(&test_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&var_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&test_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&var_) -
       reinterpret_cast<char*>(&test_)) + sizeof(var_));
 }
 
@@ -3703,7 +3639,6 @@ void ActionTree_Case::Clear() {
 const char* ActionTree_Case::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -3968,8 +3903,6 @@ void ActionTree_Case::InternalSwap(ActionTree_Case* other) {
 
 // ===================================================================
 
-void ActionTree_Forward::InitAsDefaultInstance() {
-}
 class ActionTree_Forward::_Internal {
  public:
 };
@@ -4025,7 +3958,6 @@ void ActionTree_Forward::Clear() {
 
 const char* ActionTree_Forward::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -4133,10 +4065,6 @@ void ActionTree_Forward::InternalSwap(ActionTree_Forward* other) {
 
 // ===================================================================
 
-void ActionTree_Event::InitAsDefaultInstance() {
-  ::previrt::proto::_ActionTree_Event_default_instance_._instance.get_mutable()->then_ = const_cast< ::previrt::proto::ActionTree*>(
-      ::previrt::proto::ActionTree::internal_default_instance());
-}
 class ActionTree_Event::_Internal {
  public:
   using HasBits = decltype(std::declval<ActionTree_Event>()._has_bits_);
@@ -4170,7 +4098,7 @@ ActionTree_Event::ActionTree_Event(const ActionTree_Event& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   handler_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_handler()) {
-    handler_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_handler(),
+    handler_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_handler(), 
       GetArena());
   }
   if (from._internal_has_then()) {
@@ -4185,8 +4113,9 @@ ActionTree_Event::ActionTree_Event(const ActionTree_Event& from)
 void ActionTree_Event::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ActionTree_Previrt_2eproto.base);
   handler_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(&then_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&exit_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&then_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&exit_) -
       reinterpret_cast<char*>(&then_)) + sizeof(exit_));
 }
 
@@ -4242,7 +4171,6 @@ void ActionTree_Event::Clear() {
 const char* ActionTree_Event::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -4478,14 +4406,6 @@ void ActionTree_Event::InternalSwap(ActionTree_Event* other) {
 
 // ===================================================================
 
-void ActionTree::InitAsDefaultInstance() {
-  ::previrt::proto::_ActionTree_default_instance_._instance.get_mutable()->case__ = const_cast< ::previrt::proto::ActionTree_Case*>(
-      ::previrt::proto::ActionTree_Case::internal_default_instance());
-  ::previrt::proto::_ActionTree_default_instance_._instance.get_mutable()->forward_ = const_cast< ::previrt::proto::ActionTree_Forward*>(
-      ::previrt::proto::ActionTree_Forward::internal_default_instance());
-  ::previrt::proto::_ActionTree_default_instance_._instance.get_mutable()->event_ = const_cast< ::previrt::proto::ActionTree_Event*>(
-      ::previrt::proto::ActionTree_Event::internal_default_instance());
-}
 class ActionTree::_Internal {
  public:
   using HasBits = decltype(std::declval<ActionTree>()._has_bits_);
@@ -4552,8 +4472,9 @@ ActionTree::ActionTree(const ActionTree& from)
 
 void ActionTree::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ActionTree_Previrt_2eproto.base);
-  ::memset(&case__, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&event_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&case__) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&event_) -
       reinterpret_cast<char*>(&case__)) + sizeof(event_));
   type_ = 1;
 }
@@ -4615,7 +4536,6 @@ void ActionTree::Clear() {
 const char* ActionTree::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -4854,10 +4774,6 @@ void ActionTree::InternalSwap(ActionTree* other) {
 
 // ===================================================================
 
-void EnforceInterface_Functions::InitAsDefaultInstance() {
-  ::previrt::proto::_EnforceInterface_Functions_default_instance_._instance.get_mutable()->actions_ = const_cast< ::previrt::proto::ActionTree*>(
-      ::previrt::proto::ActionTree::internal_default_instance());
-}
 class EnforceInterface_Functions::_Internal {
  public:
   using HasBits = decltype(std::declval<EnforceInterface_Functions>()._has_bits_);
@@ -4889,7 +4805,7 @@ EnforceInterface_Functions::EnforceInterface_Functions(const EnforceInterface_Fu
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_name()) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
       GetArena());
   }
   if (from._internal_has_actions()) {
@@ -4956,7 +4872,6 @@ void EnforceInterface_Functions::Clear() {
 const char* EnforceInterface_Functions::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -5150,8 +5065,6 @@ void EnforceInterface_Functions::InternalSwap(EnforceInterface_Functions* other)
 
 // ===================================================================
 
-void EnforceInterface::InitAsDefaultInstance() {
-}
 class EnforceInterface::_Internal {
  public:
 };
@@ -5211,7 +5124,6 @@ void EnforceInterface::Clear() {
 
 const char* EnforceInterface::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -5354,8 +5266,6 @@ void EnforceInterface::InternalSwap(EnforceInterface* other) {
 
 // ===================================================================
 
-void State::InitAsDefaultInstance() {
-}
 class State::_Internal {
  public:
   using HasBits = decltype(std::declval<State>()._has_bits_);
@@ -5396,32 +5306,32 @@ State::State(const State& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   features_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_features()) {
-    features_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_features(),
+    features_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_features(), 
       GetArena());
   }
   meta_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_meta()) {
-    meta_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_meta(),
+    meta_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_meta(), 
       GetArena());
   }
   caller_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_caller()) {
-    caller_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_caller(),
+    caller_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_caller(), 
       GetArena());
   }
   callee_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_callee()) {
-    callee_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_callee(),
+    callee_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_callee(), 
       GetArena());
   }
   module_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_module()) {
-    module_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_module(),
+    module_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_module(), 
       GetArena());
   }
   args_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_args()) {
-    args_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_args(),
+    args_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_args(), 
       GetArena());
   }
   // @@protoc_insertion_point(copy_constructor:previrt.proto.State)
@@ -5503,7 +5413,6 @@ void State::Clear() {
 const char* State::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -5849,8 +5758,6 @@ void State::InternalSwap(State* other) {
 
 // ===================================================================
 
-void Prediction::InitAsDefaultInstance() {
-}
 class Prediction::_Internal {
  public:
   using HasBits = decltype(std::declval<Prediction>()._has_bits_);
@@ -5883,7 +5790,7 @@ Prediction::Prediction(const Prediction& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   state_encoded_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_state_encoded()) {
-    state_encoded_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_state_encoded(),
+    state_encoded_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_state_encoded(), 
       GetArena());
   }
   ::memcpy(&q_yes_, &from.q_yes_,
@@ -5895,8 +5802,9 @@ Prediction::Prediction(const Prediction& from)
 void Prediction::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Prediction_Previrt_2eproto.base);
   state_encoded_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(&q_yes_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&pred_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&q_yes_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&pred_) -
       reinterpret_cast<char*>(&q_yes_)) + sizeof(pred_));
 }
 
@@ -5948,7 +5856,6 @@ void Prediction::Clear() {
 const char* Prediction::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);

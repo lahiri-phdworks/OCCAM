@@ -1,2 +1,2 @@
-set -o pipefail;{ : 'RUN: at line 1';   cd /home/test/simple-c/bounded-intra && /home/test/simple-c/bounded-intra/build.sh; } &&
-{ : 'RUN: at line 2';   /usr/lib/llvm-10/bin/llvm-as < slash/main-final.ll | /usr/lib/llvm-10/bin/llvm-dis | FileCheck /home/test/simple/bounded-intra.ll; }
+set -o pipefail;{ : 'RUN: at line 1';   cd /home/mlc655/Documents/Projects/OCCAM/test/simple-c/bounded-intra && /home/mlc655/Documents/Projects/OCCAM/test/simple-c/bounded-intra/build.sh; } &&
+{ : 'RUN: at line 2';   /usr/lib/llvm-10/bin/llvm-as < slash/main-final.ll | /usr/lib/llvm-10/bin/llvm-dis | FileCheck /home/mlc655/Documents/Projects/OCCAM/test/simple/bounded-intra.ll; }

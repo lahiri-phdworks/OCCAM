@@ -45,7 +45,7 @@ namespace previrt {
  *
  * Allows a new (specialized) copy of a function if it is not
  * recursive AND p also decides to specialize.
-*/
+ */
 class RecursiveGuardSpecPolicy : public SpecializationPolicy {
 
   typedef llvm::SmallSet<llvm::Function *, 32> FunctionSet;

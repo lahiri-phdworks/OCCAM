@@ -34,6 +34,7 @@
 from threading import Thread
 import logging
 
+
 class Echo:
 
     def __init__(self, stream, logger, sb=None):
@@ -42,22 +43,23 @@ class Echo:
         self.stream = stream
         self.logger = logger
 
-
         def thread_main(stream, logger):
             while True:
                 line = stream.readline()
                 if line == '':
                     return
                 else:
-                    if sb is not None: sb.append(line)
-                    if logger is not None: logger.log(logging.INFO, line.rstrip())
+                    if sb is not None:
+                        sb.append(line)
+                    if logger is not None:
+                        logger.log(logging.INFO, line.rstrip())
 
-        self.thread = Thread(target = thread_main, args = (self.stream, self.logger))
+        self.thread = Thread(target=thread_main,
+                             args=(self.stream, self.logger))
 
         self.thread.daemon = True
 
         self.thread.start()
-
 
     def wait(self):
         self.thread.join()

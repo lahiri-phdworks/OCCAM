@@ -56,8 +56,14 @@ ENV LLVM_HOME "/usr/lib/llvm-10"
 ENV PATH "$LLVM_HOME/bin:/bin:/usr/bin:/usr/local/bin:/occam/utils/FileCheck_trusty:$GOPATH/bin:$PATH"
 
 WORKDIR /
-RUN apt-get install -y python3 python3-pip python3-dev libfreetype* libmysqlclient-dev
-RUN pip3 install grpcio-tools numpy pandas keras bokeh umap networkx labm8 sklearn jinja2 absl-py tensorflow-gpu tensorflow torch torchvision ast2json uuid alive-progress gym wget werkzeug
+
+RUN cd / && git clone --recurse-submodules -b v1.33.2 https://github.com/grpc/grpc
+RUN apt-get install -yqq build-essential autoconf make libtool pkg-config cmake cmake-data
+RUN cd /grpc && mkdir -p cmake/build && cd cmake/build && rm -rf * && cmake -DgRPC_INSTALL=ON ../.. && make -j 12 && make install && cd ../../ && make plugins -j 12
+ENV PATH "/grpc/bins/opt:$PATH"
+
+RUN apt-get install -y python3 python3-pip python3-dev libfreetype* libmysqlclient-dev parallel
+RUN pip3 install grpcio-tools numpy pandas keras bokeh umap networkx labm8 sklearn jinja2 absl-py tensorflow-gpu tensorflow torch torchvision ast2json uuid alive-progress gym wget werkzeug regex
 RUN apt-get install -y python3-dev libffi-dev build-essential virtualenvwrapper default-jre default-jdk
 RUN pip install capstone ropgadget wllvm
 
@@ -71,19 +77,11 @@ RUN apt-get install -y libmlpack-dev
 
 # RUN ln -s /usr/bin/clang-8 /usr/bin/clang && ln -s /usr/bin/llvm-config-8 /usr/bin/llvm-config
 
-RUN rm -rf /occam
-WORKDIR /occam
-COPY . .
-
 ENV CC clang
 ENV CXX clang++
 ENV LLVM_COMPILER clang
 ENV WLLVM_OUTPUT WARNING
 ENV OCCAM_HOME /occam
-
-RUN make
-RUN make install
-RUN make test
 
 # ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/chisel/build/bin
 ENV CHISEL_BENCHMARK_HOME /chiselbench
@@ -99,5 +97,10 @@ RUN cd / && git clone https://github.com/lahiri-phdworks/GadgetSetAnalyzer.git
 RUN cd / && git clone https://github.com/lahiri-phdworks/ROPgadget.git
 RUN cd / && git clone https://github.com/lahiri-phdworks/ncc.git
 
-RUN apt-get install -yqq parallel
-RUN pip3 install grpcio-tools regex 
+RUN rm -rf /occam
+WORKDIR /occam
+COPY . .
+
+RUN make clean
+RUN make  
+RUN make install
